@@ -7,12 +7,13 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinpostapi.Posts.PostAdapter
+import com.example.kotlinpostapi.Posts.PostAdapter.OnUserClickListener
 import com.example.kotlinpostapi.Posts.PostViewModel
 import com.example.kotlinpostapi.apiObjects.Post
 import com.example.kotlinpostapi.databinding.ActivityMainBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), OnUserClickListener {
 
     private val viewModel: PostViewModel by viewModel()
 
@@ -37,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         val layoutManager: LinearLayoutManager = LinearLayoutManager(this)
         rView.layoutManager = layoutManager
 
-        postAdapter = PostAdapter(listOf())
+        postAdapter = PostAdapter(listOf(), this)
         rView.adapter = postAdapter
     }
 
@@ -61,5 +62,9 @@ class MainActivity : AppCompatActivity() {
     private fun onPostsReceived(posts: List<Post>) {
         binding.post = posts.first()
         postAdapter.updatePosts(posts)
+    }
+
+    override fun onUserClick(userId: Int?) {
+        println("userid: ${userId}")
     }
 }
