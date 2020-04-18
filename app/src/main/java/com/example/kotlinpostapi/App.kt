@@ -5,6 +5,7 @@ import com.example.kotlinpostapi.Comments.CommentsListViewModel
 import com.example.kotlinpostapi.Posts.PostViewModel
 import com.example.kotlinpostapi.network.PostApi
 import com.example.kotlinpostapi.network.PostApiService
+import com.example.kotlinpostapi.repository.CommentsRepository
 import com.example.kotlinpostapi.repository.PostRepository
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -17,8 +18,9 @@ class App : Application() {
         single { PostApi(androidContext()) }
         single { provideApiService(get()) }
         single { PostRepository(postApiService = get()) }
+        single { CommentsRepository(postApiService = get()) }
         viewModel { PostViewModel(postRepository = get()) }
-        viewModel { CommentsListViewModel(commentsRepository = get()) }
+        viewModel { CommentsListViewModel(commentsRepository = get(), postRepository = get()) }
     }
 
     override fun onCreate() {

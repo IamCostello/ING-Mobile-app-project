@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinpostapi.Comments.CommentsAdapter
@@ -28,12 +29,14 @@ class CommentsList : Fragment() {
 
     private lateinit var post: Post
 
+    val args: CommentsListArgs by navArgs()
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentCommentsListBinding.inflate(inflater, container, false)
 
         setupRecyclerView()
         observeLiveData()
-        getComments(post)
+        getPost(args.postId)
 
         return binding.root
     }
@@ -50,7 +53,8 @@ class CommentsList : Fragment() {
 
     private fun observeLiveData() {
         viewModel.isErrorLiveData.observe(viewLifecycleOwner, Observer { onReceivedError() })
-        viewModel.commentsLiveData.observe(viewLifecycleOwner, Observer { onPostsReceived(it) })
+        viewModel.commentsLiveData.observe(viewLifecycleOwner, Observer { onCommentsReceived(it) })
+        viewModel.postLiveData.observe(viewLifecycleOwner, Observer { onPostReceived(it) })
     }
 
     private fun onReceivedError() {
@@ -61,10 +65,19 @@ class CommentsList : Fragment() {
             }.setPositiveButton("Spróbuj ponownie") { _, _ -> getComments(post) }.show()
     }
 
-    private fun onPostsReceived(comments: List<Comment>) {
+    private fun onCommentsReceived(comments: List<Comment>) {
         commentsAdapter.updateComments(comments)
+    }
+
+    private fun onPostReceived(post: Post){
+        this.post = post
+        binding.post = post
+        getComments(post)
     }
     private fun getComments(post: Post) {
         viewModel.getComments(post)
+    }
+    private fun getPost(postId: Int){
+        viewModel.getPost(postId)
     }
 }

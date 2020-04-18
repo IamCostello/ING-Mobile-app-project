@@ -1,6 +1,8 @@
 package com.example.kotlinpostapi.views
 
 import android.os.Bundle
+import android.os.Parcel
+import android.os.Parcelable
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,13 +18,14 @@ import com.example.kotlinpostapi.apiObjects.Post
 import com.example.kotlinpostapi.databinding.FragmentPostListBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class PostList : Fragment(), PostAdapter.OnUserClickListener {
+class PostList() : Fragment(), PostAdapter.OnUserClickListener, PostAdapter.OnPostClickListener{
 
     private val viewModel: PostViewModel by viewModel()
 
     private lateinit var binding: FragmentPostListBinding
 
     private lateinit var postAdapter: PostAdapter
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentPostListBinding.inflate(inflater, container, false)
@@ -46,7 +49,7 @@ class PostList : Fragment(), PostAdapter.OnUserClickListener {
         val layoutManager: LinearLayoutManager = LinearLayoutManager(activity)
         rView.layoutManager = layoutManager
 
-        postAdapter = PostAdapter(listOf(), this)
+        postAdapter = PostAdapter(listOf(), this, this)
         rView.adapter = postAdapter
     }
 
@@ -77,5 +80,12 @@ class PostList : Fragment(), PostAdapter.OnUserClickListener {
         findNavController().navigate(R.id.action_postList_to_userInfo)
 
         //TODO api call / map usernames
+    }
+
+    override fun onPostClick(post: Post) {
+        val action = post.id?.let { PostListDirections.actionPostListToCommentsList(it) }
+        if (action != null) {
+            findNavController().navigate(action)
+        }
     }
 }
