@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinpostapi.apiObjects.Post
 import com.example.kotlinpostapi.databinding.PostViewBinding
+import kotlinx.android.synthetic.main.post_view.view.*
 
 class PostAdapter(posts : List<Post>, onUserClickListener: OnUserClickListener) : RecyclerView.Adapter<PostAdapter.PostsViewHolder>(){
 
@@ -17,7 +18,7 @@ class PostAdapter(posts : List<Post>, onUserClickListener: OnUserClickListener) 
         private val onUserClickListener = OnUserClickListener
 
         init{
-            itemView.setOnClickListener(this)
+            itemView.username.setOnClickListener(this)
         }
 
         fun bind(post: Post){
