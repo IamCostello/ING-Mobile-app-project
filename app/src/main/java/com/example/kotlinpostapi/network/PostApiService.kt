@@ -1,5 +1,6 @@
 package com.example.kotlinpostapi.network
 
+import com.example.kotlinpostapi.apiObjects.Comment
 import com.example.kotlinpostapi.apiObjects.Post
 import com.example.kotlinpostapi.apiObjects.User
 import kotlinx.coroutines.Deferred
@@ -13,4 +14,7 @@ interface PostApiService {
 
     @GET("users/{userId}")
     suspend fun getUserData(@Path("userId") id: Int): User
+
+    @GET("/comments")
+    fun comments(): Deferred<List<Comment>>
 }
