@@ -1,6 +1,7 @@
 package com.example.kotlinpostapi
 
 import android.app.Application
+import com.example.kotlinpostapi.Comments.CommentsListViewModel
 import com.example.kotlinpostapi.Posts.PostViewModel
 import com.example.kotlinpostapi.network.PostApi
 import com.example.kotlinpostapi.network.PostApiService
@@ -17,6 +18,7 @@ class App : Application() {
         single { provideApiService(get()) }
         single { PostRepository(postApiService = get()) }
         viewModel { PostViewModel(postRepository = get()) }
+        viewModel { CommentsListViewModel(commentsRepository = get()) }
     }
 
     override fun onCreate() {
