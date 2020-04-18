@@ -13,23 +13,18 @@ class PostAdapter(posts : List<Post>, onUserClickListener: OnUserClickListener) 
     private var posts : List<Post> = posts
     var onUserClickListener = onUserClickListener
 
-    inner class PostsViewHolder(binding: PostViewBinding, OnUserClickListener: OnUserClickListener) : RecyclerView.ViewHolder(binding.root), View.OnClickListener {
+    inner class PostsViewHolder(binding: PostViewBinding, OnUserClickListener: OnUserClickListener) : RecyclerView.ViewHolder(binding.root) {
         private val binding: PostViewBinding = binding
         private val onUserClickListener = OnUserClickListener
 
         init{
-            itemView.username.setOnClickListener(this)
+            itemView.username.setOnClickListener(View.OnClickListener { onUserClickListener.onUserClick(posts[adapterPosition].userId) })
         }
 
         fun bind(post: Post){
             binding.post = post
             binding.executePendingBindings()
         }
-
-        override fun onClick(v: View?) {
-            onUserClickListener.onUserClick(posts[adapterPosition].userId)
-        }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostsViewHolder {
