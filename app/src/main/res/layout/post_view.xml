@@ -13,6 +13,13 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/username"
+            android:textSize="20sp"
+            android:textColor="@android:color/holo_red_dark"
+            android:text="@{`USER:` + post.userId}" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="@{`` + post.id}" />
         <TextView
             android:layout_width="match_parent"
@@ -22,6 +29,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@{post.body}" />
+        <Button android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Show comments"
+            android:id="@+id/show_comments_button"/>
 
 
     </LinearLayout>

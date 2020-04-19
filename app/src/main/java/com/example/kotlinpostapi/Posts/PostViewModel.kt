@@ -3,9 +3,10 @@ package com.example.kotlinpostapi.Posts
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.kotlinpostapi.ResultType
+import com.example.kotlinpostapi.util.ResultType
 import com.example.kotlinpostapi.apiObjects.Post
 import com.example.kotlinpostapi.repository.PostRepository
+import com.example.kotlinpostapi.util.Result
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import java.util.logging.Logger
@@ -23,7 +24,7 @@ class PostViewModel(private val postRepository: PostRepository) : ViewModel() {
         }
     }
 
-    private fun updatePostsLiveViewData(result: com.example.kotlinpostapi.Result<List<Post>>) {
+    private fun updatePostsLiveViewData(result: Result<List<Post>>) {
         if (result.resultType == ResultType.SUCCESS) {
             postsLiveData.postValue(result.data)
             Logger.getAnonymousLogger().info("updatePostsLiveViewData SUCCESS")
@@ -31,7 +32,6 @@ class PostViewModel(private val postRepository: PostRepository) : ViewModel() {
             onError()
         }
     }
-
 
     private fun onError() = isErrorLiveData.postValue(true)
 }
