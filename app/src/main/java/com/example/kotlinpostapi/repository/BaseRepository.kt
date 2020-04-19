@@ -4,7 +4,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import com.example.kotlinpostapi.util.Result
 
-open class BaseRepository {
+open class BaseRepository() {
     suspend fun<T: Any> handleApiCall(call: suspend () -> T, errMessage: String): Result<T> {
         return try{
             val response = withContext(Dispatchers.IO) { call.invoke() }

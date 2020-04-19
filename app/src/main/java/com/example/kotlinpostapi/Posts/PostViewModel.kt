@@ -33,6 +33,5 @@ class PostViewModel(private val postRepository: PostRepository) : ViewModel() {
         }
     }
 
-
     private fun onError() = isErrorLiveData.postValue(true)
 }

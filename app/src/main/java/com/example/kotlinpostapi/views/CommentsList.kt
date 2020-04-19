@@ -18,9 +18,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class CommentsList : Fragment() {
-
-
-
     private val viewModel: CommentsListViewModel by viewModel()
 
     private lateinit var binding: FragmentCommentsListBinding

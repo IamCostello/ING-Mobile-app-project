@@ -1,6 +1,6 @@
 package com.example.kotlinpostapi.apiObjects
 
-class Adress {
+class Address {
     var street: String? = null
     var suite: String? = null
     var city: String? = null

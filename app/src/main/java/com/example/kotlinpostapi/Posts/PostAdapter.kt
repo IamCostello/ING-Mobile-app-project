@@ -1,19 +1,19 @@
 package com.example.kotlinpostapi.Posts
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinpostapi.apiObjects.Post
 import com.example.kotlinpostapi.databinding.PostViewBinding
 import kotlinx.android.synthetic.main.post_view.view.*
+import com.example.kotlinpostapi.Navigation.*
+import com.example.kotlinpostapi.apiObjects.User
 
-class PostAdapter(posts : List<Post>,
-                  var onUserClickListener: OnUserClickListener,
-                  var onPostClickListener: OnPostClickListener
+class PostAdapter(
+    private var posts: List<Post>,
+    var onUserClickListener: OnUserClickListener,
+    var onPostClickListener: OnPostClickListener
 ) : RecyclerView.Adapter<PostAdapter.PostsViewHolder>(){
-
-    private var posts : List<Post> = posts
 
     inner class PostsViewHolder(binding: PostViewBinding, OnUserClickListener: OnUserClickListener, OnPostClickListener: OnPostClickListener) : RecyclerView.ViewHolder(binding.root) {
         private val binding: PostViewBinding = binding
@@ -47,13 +47,5 @@ class PostAdapter(posts : List<Post>,
     fun updatePosts(posts: List<Post>){
         this.posts = posts
         notifyDataSetChanged()
-    }
-
-    interface OnUserClickListener{
-        fun onUserClick(userId: Int?)
-    }
-
-    interface OnPostClickListener{
-        fun onPostClick(post: Post)
     }
 }
