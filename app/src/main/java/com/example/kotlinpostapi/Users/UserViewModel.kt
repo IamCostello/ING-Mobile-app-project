@@ -30,6 +30,5 @@ class UserViewModel(private val userRepository: UserRepository): ViewModel() {
             onError()
         }
     }
-
     private fun onError() = isErrorLiveData.postValue(true)
 }

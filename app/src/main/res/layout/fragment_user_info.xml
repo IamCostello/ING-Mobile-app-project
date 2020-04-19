@@ -12,7 +12,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".views.UserInfo">
+        tools:context=".views.UserInfo"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
@@ -41,6 +42,17 @@
             android:id="@+id/userEmail"
             android:text="@{user.email}"
             app:layout_constraintTop_toBottomOf="@+id/username" />
+
+
+<!--        Test button to display user's albums-->
+        <Button
+            android:id="@+id/show_albums_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Show albums"
+            tools:layout_editor_absoluteX="-16dp"
+            tools:layout_editor_absoluteY="330dp" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

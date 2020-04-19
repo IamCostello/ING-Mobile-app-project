@@ -11,18 +11,25 @@ import com.example.kotlinpostapi.Users.UserViewModel
 import com.example.kotlinpostapi.apiObjects.User
 import com.example.kotlinpostapi.databinding.FragmentUserInfoBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import androidx.navigation.fragment.findNavController
+import com.example.kotlinpostapi.Navigation
+import kotlinx.android.synthetic.main.fragment_user_info.*
 
-class UserInfo : Fragment() {
+class UserInfo : Fragment(), Navigation.OnAlbumClickListener {
     private val userViewModel: UserViewModel by viewModel()
     private lateinit var binding: FragmentUserInfoBinding
     private lateinit var userData: User
     val args: UserInfoArgs by navArgs()
+
+    private lateinit var onAlbumClickListener: Navigation.OnAlbumClickListener
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentUserInfoBinding.inflate(inflater, container, false)
 
         observeLiveData()
         getUserData(args.userId)
+
+        show_albums_button.setOnClickListener{onAlbumClickListener.onAlbumClick(userData.id)}
 
         return binding.root
     }
@@ -48,4 +55,14 @@ class UserInfo : Fragment() {
     private fun getUserData(userId: Int){
         userViewModel.getUserData(userId)
     }
+
+    //??
+    override fun onAlbumClick(userId: Int?) {
+        val action = userId?.let { PostListDirections.actionPostListToCommentsList(it)}
+        if(action != null){
+            findNavController().navigate(action)
+        }
+    }
+
+
 }

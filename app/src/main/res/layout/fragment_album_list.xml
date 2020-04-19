@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="album"
-            type="com.example.kotlinpostapi.apiObjects.Album" />
+            name="user"
+            type="com.example.kotlinpostapi.apiObjects.User" />
         <variable
             name="albums"
             type="java.util.List" />

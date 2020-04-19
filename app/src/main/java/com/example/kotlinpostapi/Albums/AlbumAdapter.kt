@@ -9,13 +9,13 @@ import kotlinx.android.synthetic.main.album_view.view.*
 
 
 class AlbumAdapter(albums : List<Album>,
-                    var onAlbumClickListener: OnAlbumClickListener) : RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>() {
+                    var onPhotoClickListener: OnPhotoClickListener) : RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>() {
 
     private var albums : List<Album> = albums
 
-    inner class AlbumViewHolder(binding: AlbumViewBinding, OnAlbumClickListener: OnAlbumClickListener) : RecyclerView.ViewHolder(binding.root) {
+    inner class AlbumViewHolder(binding: AlbumViewBinding, OnPhotoClickListener: OnPhotoClickListener) : RecyclerView.ViewHolder(binding.root) {
         private val binding: AlbumViewBinding = binding
-        private val onAlbumClickListener  = OnAlbumClickListener
+        private val onAlbumClickListener  = OnPhotoClickListener
 
         init {
             itemView.show_photos_button.setOnClickListener{onAlbumClickListener.onAlbumClick(albums[adapterPosition])}
@@ -31,7 +31,7 @@ class AlbumAdapter(albums : List<Album>,
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbumViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = AlbumViewBinding.inflate(layoutInflater)
-        return AlbumViewHolder(binding, onAlbumClickListener)
+        return AlbumViewHolder(binding, onPhotoClickListener)
     }
 
     override fun getItemCount(): Int {
@@ -45,9 +45,7 @@ class AlbumAdapter(albums : List<Album>,
         notifyDataSetChanged()
     }
 
-
-
-    interface OnAlbumClickListener{
+    interface OnPhotoClickListener{
         fun onAlbumClick(album: Album)
     }
 

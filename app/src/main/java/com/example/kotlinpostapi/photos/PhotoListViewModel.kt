@@ -26,13 +26,13 @@ class PhotoListViewModel (private val photosRepository: PhotoRepository, private
         }
     }
 
-    fun getAlbum(albumId: Int){
-        viewModelScope.launch {
-            val apiResult = albumRepository.getAlbums()
-            val uiResult = Result(apiResult.resultType, apiResult.data?.filter { it.id == albumId }?.first())
-            updateAlbumsLiveData(uiResult)
-        }
-    }
+//    fun getAlbum(albumId: Int){
+//        viewModelScope.launch {
+//            val apiResult = albumRepository.getAlbums()
+//            val uiResult = Result(apiResult.resultType, apiResult.data?.filter { it.id == albumId }?.first())
+//            updateAlbumsLiveData(uiResult)
+//        }
+//    }
 
 
 

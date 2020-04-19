@@ -24,6 +24,10 @@
         <argument
             android:name="userId"
             app:argType="integer" />
+
+        <action
+            android:id="@+id/action_userInfo_to_albumList"
+            app:destination="@id/albumsList"/>
     </fragment>
     <fragment
         android:id="@+id/commentsList"
@@ -33,4 +37,19 @@
             android:name="postId"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/albumsList"
+        android:name="com.example.kotlinpostapi.views.AlbumList"
+        android:label="AlbumList">
+        <argument
+            android:name="userId"
+            app:argType="integer"/>
+        <action
+            android:id="@+id/action_albumsList_to_photoList"
+            app:destination="@id/photoList" />
+    </fragment>
+    <fragment
+        android:id="@+id/photoList"
+        android:name="com.example.kotlinpostapi.views.PhotoList"
+        android:label="PhotoList" />
 </navigation>

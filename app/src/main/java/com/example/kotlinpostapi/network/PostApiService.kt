@@ -1,8 +1,6 @@
 package com.example.kotlinpostapi.network
 
-import com.example.kotlinpostapi.apiObjects.Comment
-import com.example.kotlinpostapi.apiObjects.Post
-import com.example.kotlinpostapi.apiObjects.User
+import com.example.kotlinpostapi.apiObjects.*
 import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -20,4 +18,15 @@ interface PostApiService {
 
     @GET("/comments")
     fun comments(): Deferred<List<Comment>>
+
+    @GET("/albums")
+    fun albums(): Deferred<List<Album>>
+
+    @GET("/users/{userId}/albums")
+    suspend fun getAlbumData(@Path("albumId") id: Int): Deferred<Album>
+
+    @GET("/photos")
+    fun photos(): Deferred<List<Photo>>
+
+
 }

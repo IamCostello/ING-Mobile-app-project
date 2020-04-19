@@ -24,15 +24,15 @@ class PhotoList : Fragment() {
     private lateinit var photosAdapter: PhotoAdapter
     private lateinit var album: Album
 
-    val args: PhotoListArgs by navArgs()
+    //val args: PhotoListArgs by navArgs()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentPhotoListBinding.inflate(inflater, container, false)
 
         setupRecyclerView()
         observeLiveData()
-        getAlbum(args.albumId)
-
+      //  getAlbum(args.albumId)
+TODO("wrócić tutaj i ogarnąć zdjęcia")
         return binding.root
     }
 
@@ -72,7 +72,7 @@ class PhotoList : Fragment() {
     private fun getPhotos(album: Album) {
         viewModel.getPhotos(album)
     }
-    private fun getAlbum(albumId: Int){
-        viewModel.getAlbum(albumId)
-    }
+//    private fun getAlbum(albumId: Int){
+//        viewModel.getAlbum(albumId)
+//    }
 }

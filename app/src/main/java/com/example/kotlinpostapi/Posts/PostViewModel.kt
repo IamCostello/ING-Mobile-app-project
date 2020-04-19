@@ -17,7 +17,6 @@ class PostViewModel(private val postRepository: PostRepository) : ViewModel() {
 
 
     fun getPosts() {
-        Timber.d("getPosts")
         viewModelScope.launch {
             val apiResult = postRepository.getPosts()
             updatePostsLiveViewData(apiResult)
