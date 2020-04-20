@@ -32,7 +32,7 @@ class PhotoList : Fragment() {
         setupRecyclerView()
         observeLiveData()
       //  getAlbum(args.albumId)
-TODO("wrócić tutaj i ogarnąć zdjęcia")
+        //TODO wrócić tutaj i ogarnąć zdjęcia
         return binding.root
     }
 

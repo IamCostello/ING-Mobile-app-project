@@ -13,7 +13,6 @@ import com.example.kotlinpostapi.databinding.FragmentUserInfoBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import androidx.navigation.fragment.findNavController
 import com.example.kotlinpostapi.Navigation
-import kotlinx.android.synthetic.main.fragment_user_info.*
 
 class UserInfo : Fragment(), Navigation.OnAlbumClickListener {
     private val userViewModel: UserViewModel by viewModel()
@@ -21,15 +20,13 @@ class UserInfo : Fragment(), Navigation.OnAlbumClickListener {
     private lateinit var userData: User
     val args: UserInfoArgs by navArgs()
 
-    private lateinit var onAlbumClickListener: Navigation.OnAlbumClickListener
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentUserInfoBinding.inflate(inflater, container, false)
 
         observeLiveData()
         getUserData(args.userId)
 
-        show_albums_button.setOnClickListener{onAlbumClickListener.onAlbumClick(userData.id)}
+        binding.showAlbumsButton.setOnClickListener(View.OnClickListener { onAlbumClick(userData.id) })
 
         return binding.root
     }

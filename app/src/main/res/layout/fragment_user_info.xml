@@ -49,6 +49,7 @@
             android:id="@+id/show_albums_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/userEmail"
             android:text="Show albums"
             tools:layout_editor_absoluteX="-16dp"
             tools:layout_editor_absoluteY="330dp" />
