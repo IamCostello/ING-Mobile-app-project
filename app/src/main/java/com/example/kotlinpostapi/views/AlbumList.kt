@@ -6,23 +6,24 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinpostapi.Albums.AlbumAdapter
 import com.example.kotlinpostapi.Albums.AlbumViewModel
+import com.example.kotlinpostapi.Navigation
 import com.example.kotlinpostapi.apiObjects.Album
 import com.example.kotlinpostapi.apiObjects.User
 import com.example.kotlinpostapi.databinding.FragmentAlbumListBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class AlbumList() : Fragment(), AlbumAdapter.OnPhotoClickListener{
+class AlbumList() : Fragment(), Navigation.OnPhotoClickListener{
 
     private val viewModel : AlbumViewModel by viewModel()
     private lateinit var binding: FragmentAlbumListBinding
     private lateinit var albumsAdapter: AlbumAdapter
     private lateinit var user: User
-
 
     val args: AlbumListArgs by navArgs()
 
@@ -59,13 +60,6 @@ class AlbumList() : Fragment(), AlbumAdapter.OnPhotoClickListener{
             }.setPositiveButton("Spróbuj ponownie") { _, _ -> getAlbum(user) }.show()
     }
 
-/*
-    private fun onAlbumReceived(albums: Album) {
-        this.album = albums
-        binding.album = albums
-    }
-*/
-
     private fun onAlbumReceived(albums: List<Album>) {
         albumsAdapter.updateAlbums(albums)
     }
@@ -77,7 +71,6 @@ class AlbumList() : Fragment(), AlbumAdapter.OnPhotoClickListener{
         getAlbum(user)
     }
 
-    //nowe
     private fun getAlbum(user: User){
         viewModel.getAlbums(user)
     }
@@ -86,26 +79,10 @@ class AlbumList() : Fragment(), AlbumAdapter.OnPhotoClickListener{
         viewModel.getUser(userId)
     }
 
-
-
-    //to bylo
-//    private fun getAlbums(album: Album){
-//        viewModel.getAlbums();
-//    }
-//
-//    private fun getUser(userId: Int) {
-//        viewModel.getUser(userId)
-//    }
-
-//    override fun onAlbumClick(albumId: Int?) {
-//        findNavController().navigate(R.id.action_albumList_to_photo)
-//    }
-
-    override fun onAlbumClick(album: Album) {
-        val action = album.id?.let{PostListDirections.actionPostListToCommentsList(it)}
-        //if(action != null)
-           // findNavController().navigate(R.id.action_albumList_to_photo)
-        TODO("zrobić przejście z albumu na zdjęcia")
+    override fun onPhotoClick(albumId: Int?) {
+        val action = albumId?.let{AlbumListDirections.actionAlbumsListToPhotoList(it)}
+        if(action != null)
+            findNavController().navigate(action)
     }
 
 

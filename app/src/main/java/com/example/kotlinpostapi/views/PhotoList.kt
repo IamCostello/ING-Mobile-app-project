@@ -24,22 +24,21 @@ class PhotoList : Fragment() {
     private lateinit var photosAdapter: PhotoAdapter
     private lateinit var album: Album
 
-    //val args: PhotoListArgs by navArgs()
+    val args: PhotoListArgs by navArgs()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentPhotoListBinding.inflate(inflater, container, false)
 
         setupRecyclerView()
         observeLiveData()
-      //  getAlbum(args.albumId)
-        //TODO wrócić tutaj i ogarnąć zdjęcia
+        getAlbum(args.albumId)
         return binding.root
     }
 
 
     private fun setupRecyclerView() {
         val rView: RecyclerView = binding.photoView
-        val layoutManager: LinearLayoutManager = LinearLayoutManager(activity)
+        val layoutManager = LinearLayoutManager(activity)
         rView.layoutManager = layoutManager
 
         photosAdapter = PhotoAdapter(listOf())
@@ -72,7 +71,8 @@ class PhotoList : Fragment() {
     private fun getPhotos(album: Album) {
         viewModel.getPhotos(album)
     }
-//    private fun getAlbum(albumId: Int){
-//        viewModel.getAlbum(albumId)
-//    }
+
+    private fun getAlbum(albumId: Int){
+        viewModel.getAlbum(albumId)
+    }
 }

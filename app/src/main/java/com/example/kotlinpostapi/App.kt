@@ -7,10 +7,8 @@ import com.example.kotlinpostapi.Posts.PostViewModel
 import com.example.kotlinpostapi.Users.UserViewModel
 import com.example.kotlinpostapi.network.PostApi
 import com.example.kotlinpostapi.network.PostApiService
-import com.example.kotlinpostapi.repository.AlbumRepository
-import com.example.kotlinpostapi.repository.CommentsRepository
-import com.example.kotlinpostapi.repository.PostRepository
-import com.example.kotlinpostapi.repository.UserRepository
+import com.example.kotlinpostapi.photos.PhotoListViewModel
+import com.example.kotlinpostapi.repository.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -25,12 +23,15 @@ class App : Application() {
         single { CommentsRepository(postApiService = get()) }
         single { UserRepository(postApiService = get()) }
         single { AlbumRepository(albumApiService = get()) }
+        single {PhotoRepository(photoApiService = get())}
+
         viewModel { PostViewModel(postRepository = get()) }
         viewModel { CommentsListViewModel(commentsRepository = get(), postRepository = get()) }
         viewModel { UserViewModel(userRepository = get()) }
 
 
         viewModel { AlbumViewModel(albumRepository = get(), userRepository = get()) }
+        viewModel { PhotoListViewModel(photosRepository = get(), albumRepository = get()) }
     }
 
     override fun onCreate() {

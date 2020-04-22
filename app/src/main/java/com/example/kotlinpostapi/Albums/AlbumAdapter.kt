@@ -3,22 +3,22 @@ package com.example.kotlinpostapi.Albums
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.kotlinpostapi.Navigation
 import com.example.kotlinpostapi.apiObjects.Album
 import com.example.kotlinpostapi.databinding.AlbumViewBinding
 import kotlinx.android.synthetic.main.album_view.view.*
 
 
-class AlbumAdapter(albums : List<Album>,
-                    var onPhotoClickListener: OnPhotoClickListener) : RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>() {
+class AlbumAdapter(private var albums: List<Album>, var onPhotoClickListener: Navigation.OnPhotoClickListener)
+    : RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>() {
 
-    private var albums : List<Album> = albums
+    inner class AlbumViewHolder(private val binding: AlbumViewBinding, OnPhotoClickListener: Navigation.OnPhotoClickListener)
+        : RecyclerView.ViewHolder(binding.root) {
 
-    inner class AlbumViewHolder(binding: AlbumViewBinding, OnPhotoClickListener: OnPhotoClickListener) : RecyclerView.ViewHolder(binding.root) {
-        private val binding: AlbumViewBinding = binding
         private val onAlbumClickListener  = OnPhotoClickListener
 
         init {
-            itemView.show_photos_button.setOnClickListener{onAlbumClickListener.onAlbumClick(albums[adapterPosition])}
+            itemView.show_photos_button.setOnClickListener{onAlbumClickListener.onPhotoClick(albums[adapterPosition].id)}
         }
 
 
@@ -43,10 +43,6 @@ class AlbumAdapter(albums : List<Album>,
     fun updateAlbums(albums: List<Album>){
         this.albums = albums
         notifyDataSetChanged()
-    }
-
-    interface OnPhotoClickListener{
-        fun onAlbumClick(album: Album)
     }
 
 }

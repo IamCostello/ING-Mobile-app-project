@@ -51,5 +51,9 @@
     <fragment
         android:id="@+id/photoList"
         android:name="com.example.kotlinpostapi.views.PhotoList"
-        android:label="PhotoList" />
+        android:label="PhotoList">
+        <argument
+            android:name="albumId"
+            app:argType="integer"/>
+    </fragment>
 </navigation>

@@ -25,8 +25,12 @@ interface PostApiService {
     @GET("/users/{userId}/albums")
     fun getAlbumData(@Path("albumId") id: Int): Deferred<Album>
 
+
     @GET("/photos")
-    fun photos(): Deferred<List<Photo>>
+    fun photos() : Deferred<List<Photo>>
+
+    @GET("/albums/{albumId}/photos")
+    fun getPhotoData(@Path("albumId") id: Int): Deferred<Photo>
 
 
 }

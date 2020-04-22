@@ -1,7 +1,6 @@
 package com.example.kotlinpostapi
 
 import com.example.kotlinpostapi.apiObjects.Post
-import com.example.kotlinpostapi.apiObjects.User
 
 class Navigation {
     interface OnUserClickListener{
@@ -14,5 +13,9 @@ class Navigation {
 
     interface OnAlbumClickListener{
         fun onAlbumClick(userId: Int?)
+    }
+
+    interface  OnPhotoClickListener{
+        fun onPhotoClick(albumId: Int?)
     }
 }

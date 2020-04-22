@@ -23,8 +23,6 @@ class AlbumViewModel(
     val userLiveData: MutableLiveData<User> = MutableLiveData()
     val isErrorLiveData: MutableLiveData<Boolean> = MutableLiveData()
 
-    //z tamtego projektu
-
     fun getAlbums(user: User) {
         Timber.d("getAlbums")
         viewModelScope.launch {
@@ -48,7 +46,7 @@ class AlbumViewModel(
     fun updateUserLiveData(result: Result<User>) {
         if (result.resultType == ResultType.SUCCESS) {
             userLiveData.postValue(result.data)
-            Logger.getAnonymousLogger().info("updateCommentsLiveViewData SUCCESS post")
+            Logger.getAnonymousLogger().info("updateCommentsLiveViewData SUCCESS")
         } else {
             onError()
         }
