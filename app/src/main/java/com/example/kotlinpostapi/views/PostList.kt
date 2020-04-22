@@ -1,20 +1,20 @@
 package com.example.kotlinpostapi.views
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinpostapi.Navigation
 import com.example.kotlinpostapi.Posts.PostAdapter
 import com.example.kotlinpostapi.Posts.PostViewModel
 import com.example.kotlinpostapi.apiObjects.Post
-import com.example.kotlinpostapi.apiObjects.User
 import com.example.kotlinpostapi.databinding.FragmentPostListBinding
+import com.example.kotlinpostapi.util.PostListDecorator
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PostList() : Fragment(), Navigation.OnUserClickListener, Navigation.OnPostClickListener{
@@ -38,8 +38,9 @@ class PostList() : Fragment(), Navigation.OnUserClickListener, Navigation.OnPost
 
     private fun setupRecyclerView() {
         val rView: RecyclerView = binding.postsView
-        val layoutManager: LinearLayoutManager = LinearLayoutManager(activity)
+        val layoutManager: GridLayoutManager = GridLayoutManager(activity, GridLayoutManager.VERTICAL)
         rView.layoutManager = layoutManager
+        rView.addItemDecoration(PostListDecorator(12, 24))
 
         postAdapter = PostAdapter(listOf(),this, this)
         rView.adapter = postAdapter

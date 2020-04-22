@@ -22,7 +22,7 @@ class App : Application() {
         single { PostRepository(postApiService = get()) }
         single { CommentsRepository(postApiService = get()) }
         single { UserRepository(postApiService = get()) }
-        viewModel { PostViewModel(postRepository = get(), userRepository = get()) }
+        viewModel { PostViewModel(postRepository = get(), userRepository = get(), commentsRepository = get()) }
         viewModel { CommentsListViewModel(commentsRepository = get(), postRepository = get()) }
         viewModel { UserViewModel(userRepository = get()) }
     }

@@ -6,34 +6,40 @@
             type="com.example.kotlinpostapi.apiObjects.Post" />
     </data>
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical" android:layout_margin="16dp">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/post_shape"
+        android:orientation="vertical"
+        android:padding="8dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/username"
-            android:textSize="20sp"
-            android:textColor="@android:color/holo_red_dark"
-            android:text="@{post.username}" />
+            android:textSize="24sp"
+            android:textColor="@color/colorGreen"
+            android:text="@{post.username}"
+            android:layout_marginBottom="2.5dp"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{`` + post.id}" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/colorTeal"
+            android:layout_marginBottom="2dp"
             android:text="@{post.title}" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/colorGrey"
+            android:layout_marginBottom="4dp"
             android:text="@{post.body}" />
-        <Button android:layout_width="match_parent"
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Show comments"
+            android:text="@{post.commentsCount + ` show comments`}"
             android:id="@+id/show_comments_button"/>
-
 
     </LinearLayout>
 </layout>
