@@ -53,9 +53,8 @@ class UserInfo : Fragment(), Navigation.OnAlbumClickListener {
         userViewModel.getUserData(userId)
     }
 
-    //??
     override fun onAlbumClick(userId: Int?) {
-        val action = userId?.let { PostListDirections.actionPostListToCommentsList(it)}
+        val action = userId?.let {UserInfoDirections.actionUserInfoToAlbumList(it)}
         if(action != null){
             findNavController().navigate(action)
         }
