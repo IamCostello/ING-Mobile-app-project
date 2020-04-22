@@ -24,8 +24,7 @@ class App : Application() {
         single { UserRepository(postApiService = get()) }
         single { AlbumRepository(albumApiService = get()) }
         single {PhotoRepository(photoApiService = get())}
-
-        viewModel { PostViewModel(postRepository = get()) }
+        viewModel { PostViewModel(postRepository = get(), userRepository = get(), commentsRepository = get()) }
         viewModel { CommentsListViewModel(commentsRepository = get(), postRepository = get()) }
         viewModel { UserViewModel(userRepository = get()) }
 

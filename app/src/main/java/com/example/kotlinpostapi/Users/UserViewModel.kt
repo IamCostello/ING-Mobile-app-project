@@ -16,8 +16,10 @@ class UserViewModel(private val userRepository: UserRepository): ViewModel() {
 
     fun getUserData(userId: Int){
         viewModelScope.launch {
-            val response = userRepository.getUserData(userId)
-            updateUserLiveData(response)
+            val response = userRepository.getUserList()
+            val uiResult = Result(response.resultType, response.data?.get(userId - 1))
+
+            updateUserLiveData(uiResult)
         }
     }
 

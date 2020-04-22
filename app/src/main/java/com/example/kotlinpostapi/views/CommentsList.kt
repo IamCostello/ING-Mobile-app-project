@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinpostapi.Comments.CommentsAdapter
@@ -14,6 +15,7 @@ import com.example.kotlinpostapi.Comments.CommentsListViewModel
 import com.example.kotlinpostapi.apiObjects.Comment
 import com.example.kotlinpostapi.apiObjects.Post
 import com.example.kotlinpostapi.databinding.FragmentCommentsListBinding
+import com.example.kotlinpostapi.util.PostListDecorator
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -41,7 +43,8 @@ class CommentsList : Fragment() {
 
     private fun setupRecyclerView() {
         val rView: RecyclerView = binding.commentsView
-        val layoutManager: LinearLayoutManager = LinearLayoutManager(activity)
+        val layoutManager = GridLayoutManager(activity, GridLayoutManager.VERTICAL)
+        rView.addItemDecoration(PostListDecorator(12, 24))
         rView.layoutManager = layoutManager
 
         commentsAdapter = CommentsAdapter(listOf())

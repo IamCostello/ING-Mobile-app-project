@@ -7,7 +7,6 @@ import com.example.kotlinpostapi.apiObjects.Post
 import com.example.kotlinpostapi.databinding.PostViewBinding
 import kotlinx.android.synthetic.main.post_view.view.*
 import com.example.kotlinpostapi.Navigation.*
-import com.example.kotlinpostapi.apiObjects.User
 
 class PostAdapter(
     private var posts: List<Post>,
