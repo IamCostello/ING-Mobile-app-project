@@ -27,3 +27,7 @@ Aplikacja tworzona w ramach współpracy z ING przez zespół w składzie:
   <img src="https://user-images.githubusercontent.com/28679660/80126342-40ad3000-8593-11ea-8c0f-30584f3652a8.jpg" alt="user-screen" width="212px"/>
   <img src="https://user-images.githubusercontent.com/28679660/80126348-430f8a00-8593-11ea-8a52-237c21d7b0b2.jpg" alt="error-screen" width="212px"/>
 </p>
+<p align="center">
+<img src="https://user-images.githubusercontent.com/51888438/80132927-b7026000-859c-11ea-9756-a33f43a3c344.jpg" alt="album-screen" width="212px"/>
+ <img src="https://user-images.githubusercontent.com/51888438/80133010-ddc09680-859c-11ea-9f50-a4b878c65a99.jpg" alt="photo-screen" width="212px"/>
+ </p>
