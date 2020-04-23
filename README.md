@@ -1,5 +1,5 @@
 ## ING Mobile app project
-Aplikacja tworzona w rammach współpracy z ING przez zespół w składzie:
+Aplikacja tworzona w ramach współpracy z ING przez zespół w składzie:
  - Dariusz Gansty
  - Krzysztof Dąbrowski
  - Anna Domańska
