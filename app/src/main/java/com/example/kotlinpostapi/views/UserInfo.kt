@@ -26,7 +26,7 @@ class UserInfo : Fragment(), Navigation.OnAlbumClickListener {
         observeLiveData()
         getUserData(args.userId)
 
-        binding.showAlbumsButton.setOnClickListener(View.OnClickListener { onAlbumClick(userData.id) })
+        binding.showAlbumsButton.setOnClickListener(View.OnClickListener { onAlbumClick(args.userId) })
 
         return binding.root
     }

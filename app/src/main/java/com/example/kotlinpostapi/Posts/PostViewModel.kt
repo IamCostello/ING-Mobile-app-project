@@ -21,7 +21,7 @@ class PostViewModel(private val postRepository: PostRepository, private val user
         viewModelScope.launch {
             val apiResult = postRepository.getPosts()
             val userList = userRepository.getUserNamesList()
-            val commentsCountList = commentsRepository.getCommentCount(apiResult.data!!)
+            val commentsCountList = commentsRepository.getCommentCount(apiResult.data)
 
             apiResult.data?.map { it.username = userList.data!![it.userId!!-1] }
             apiResult.data?.map { it.commentsCount = commentsCountList.data!![it.userId!!-1] }

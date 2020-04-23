@@ -15,7 +15,7 @@ class CommentsRepository(private val postApiService: PostApiService): BaseReposi
         errMessage = "Failed loading comments"
     )
 
-    suspend fun getCommentCount(postList: List<Post>): Result<List<Int>> {
+    suspend fun getCommentCount(postList: List<Post>?): Result<List<Int>> {
         try{
             return UiParser.getCommentsCount(postList, handleApiCall(
                 call =  {postApiService.comments().await()},

@@ -11,10 +11,10 @@ class UiParser {
             return Result(result.resultType, userList)
         }
 
-        fun getCommentsCount(postList: List<Post>, result: Result<List<Comment>>): Result<List<Int>> {
+        fun getCommentsCount(postList: List<Post>?, result: Result<List<Comment>>): Result<List<Int>> {
             val commentAmountList: MutableList<Int> = mutableListOf()
 
-            postList.forEachIndexed { index, element ->
+            postList?.forEach { element ->
                 run {
                     commentAmountList.add(result.data!!.count { it.postId == element.id })
                 }
