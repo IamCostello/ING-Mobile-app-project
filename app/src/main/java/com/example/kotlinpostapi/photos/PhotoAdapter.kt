@@ -20,6 +20,7 @@ class PhotoAdapter(private var photos: List<Photo>) : RecyclerView.Adapter<Photo
                 .load(photo.thumbnailUrl)
                 .into(binding.photoCardImage)
 
+
         }
     }
 
