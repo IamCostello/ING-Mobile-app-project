@@ -3,19 +3,23 @@ package com.example.kotlinpostapi.photos
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.kotlinpostapi.R
 import com.example.kotlinpostapi.apiObjects.Photo
 import com.example.kotlinpostapi.databinding.PhotoViewBinding
 
-class PhotoAdapter(photos: List<Photo>) : RecyclerView.Adapter<PhotoAdapter.PhotoViewHolder>(){
+class PhotoAdapter(private var photos: List<Photo>) : RecyclerView.Adapter<PhotoAdapter.PhotoViewHolder>(){
 
-    private var photos : List<Photo> = photos
-
-    inner class PhotoViewHolder(binding: PhotoViewBinding) : RecyclerView.ViewHolder(binding.root){
-        private val binding : PhotoViewBinding = binding
+    inner class PhotoViewHolder(private val binding: PhotoViewBinding) : RecyclerView.ViewHolder(binding.root){
 
         fun bind(photo: Photo){
             binding.photo = photo
             binding.executePendingBindings()
+
+            Glide.with(binding.photoCardImage)
+                .load(photo.thumbnailUrl)
+                .into(binding.photoCardImage)
+
         }
     }
 
@@ -23,6 +27,8 @@ class PhotoAdapter(photos: List<Photo>) : RecyclerView.Adapter<PhotoAdapter.Phot
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = PhotoViewBinding.inflate(layoutInflater)
         return PhotoViewHolder(binding)
+
+
     }
 
     override fun getItemCount(): Int {
