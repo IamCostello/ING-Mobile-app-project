@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinpostapi.Albums.AlbumAdapter
@@ -16,6 +17,7 @@ import com.example.kotlinpostapi.Navigation
 import com.example.kotlinpostapi.apiObjects.Album
 import com.example.kotlinpostapi.apiObjects.User
 import com.example.kotlinpostapi.databinding.FragmentAlbumListBinding
+import com.example.kotlinpostapi.util.PostListDecorator
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AlbumList() : Fragment(), Navigation.OnPhotoClickListener{
@@ -39,8 +41,9 @@ class AlbumList() : Fragment(), Navigation.OnPhotoClickListener{
 
     private fun setupRecyclerView() {
         val rView: RecyclerView = binding.albumsView
-        val layoutManager = LinearLayoutManager(activity)
+        val layoutManager = GridLayoutManager(activity, GridLayoutManager.VERTICAL)
         rView.layoutManager = layoutManager
+        rView.addItemDecoration(PostListDecorator(12,24))
 
         albumsAdapter = AlbumAdapter(listOf(),this)
         rView.adapter = albumsAdapter

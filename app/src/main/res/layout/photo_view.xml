@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -11,6 +12,7 @@
  <androidx.cardview.widget.CardView
      android:layout_width="match_parent"
      android:layout_height="250dp"
+     android:padding="10dp"
      app:cardCornerRadius="5dp"
      app:cardElevation="15dp">
      
@@ -24,16 +26,21 @@
          android:paddingBottom="10dp">
 
          <ImageView
+             android:id="@+id/photo_card_image"
              android:layout_width="match_parent"
              android:layout_height="180dp"
-             android:id="@+id/photo_card_image"
-             android:background="@color/colorGrey"/>
+             android:layout_marginBottom="2.5dp"
+             android:background="@color/colorGrey" />
 
          <TextView
+             android:id="@+id/photo_card_title"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-             android:text="@{`Photo title:` + photo.title}"
-             android:id="@+id/photo_card_title"/>
+             android:layout_marginBottom="4dp"
+             android:ellipsize="end"
+             android:maxLines="2"
+             android:textColor="@color/colorPrimary"
+             android:text="@{`Photo title:` + photo.title}" />
 
      </LinearLayout>
      
