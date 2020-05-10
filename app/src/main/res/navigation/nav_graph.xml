@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_userInfo_to_albumList"
             app:destination="@id/albumsList"/>
+        <action
+            android:id="@+id/action_userInfo_to_map"
+            app:destination="@id/map" />
     </fragment>
     <fragment
         android:id="@+id/commentsList"
@@ -48,6 +51,7 @@
             android:id="@+id/action_albumsList_to_photoList"
             app:destination="@id/photoList" />
     </fragment>
+
     <fragment
         android:id="@+id/photoList"
         android:name="com.example.kotlinpostapi.views.PhotoList"
@@ -56,4 +60,19 @@
             android:name="albumId"
             app:argType="integer"/>
     </fragment>
+    <fragment
+        android:id="@+id/map"
+        android:name="com.example.kotlinpostapi.views.Map"
+        class="com.google.android.gms.maps.MapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <argument
+            android:name="userLat"
+            app:argType="string" />
+        <argument
+            android:name="userLng"
+            app:argType="string" />
+    </fragment>
+
+
 </navigation>

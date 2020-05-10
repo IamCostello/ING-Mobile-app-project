@@ -10,4 +10,5 @@
     <string name="company">Company:</string>
     <string name="show_albums">Show albums</string>
     <string name="show_photos">Show photos</string>
+    <string name="show_map">Show map</string>
 </resources>

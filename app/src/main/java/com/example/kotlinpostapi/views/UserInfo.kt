@@ -13,20 +13,29 @@ import com.example.kotlinpostapi.databinding.FragmentUserInfoBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import androidx.navigation.fragment.findNavController
 import com.example.kotlinpostapi.Navigation
+import com.example.kotlinpostapi.apiObjects.Geo
 
-class UserInfo : Fragment(), Navigation.OnAlbumClickListener {
+class UserInfo : Fragment(), Navigation.OnAlbumClickListener, Navigation.OnMapClickListener {
     private val userViewModel: UserViewModel by viewModel()
     private lateinit var binding: FragmentUserInfoBinding
     private lateinit var userData: User
     val args: UserInfoArgs by navArgs()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         binding = FragmentUserInfoBinding.inflate(inflater, container, false)
 
         observeLiveData()
         getUserData(args.userId)
 
         binding.showAlbumsButton.setOnClickListener(View.OnClickListener { onAlbumClick(args.userId) })
+        binding.showMapButton.setOnClickListener(View.OnClickListener { onMapClick(userData.address?.geo?.lat,
+            userData.address?.geo?.lng
+        ) })
+
 
         return binding.root
     }
@@ -44,21 +53,32 @@ class UserInfo : Fragment(), Navigation.OnAlbumClickListener {
             }.setPositiveButton("Spróbuj ponownie") { _, _ -> getUserData(args.userId) }.show()
     }
 
-    private fun onUserDataReceived(userData: User){
+    private fun onUserDataReceived(userData: User) {
         this.userData = userData
         binding.user = userData
     }
 
-    private fun getUserData(userId: Int){
+    private fun getUserData(userId: Int) {
         userViewModel.getUserData(userId)
     }
 
     override fun onAlbumClick(userId: Int?) {
-        val action = userId?.let {UserInfoDirections.actionUserInfoToAlbumList(it)}
-        if(action != null){
+        val action = userId?.let { UserInfoDirections.actionUserInfoToAlbumList(it) }
+
+        if (action != null) {
             findNavController().navigate(action)
         }
     }
 
 
+    override fun onMapClick(userLat: String?, userLng: String?) {
+        val action = userLat?.let { UserInfoDirections.actionUserInfoToMap(it, userLng!!) }
+
+        if(action != null){
+            findNavController().navigate(action)
+        }
+    }
 }
+
+
+
