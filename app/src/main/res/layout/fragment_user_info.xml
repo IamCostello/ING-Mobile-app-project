@@ -68,7 +68,7 @@
 
         </RelativeLayout>
 
-        <RelativeLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="477dp"
             android:layout_below="@id/layout_icon_u">
@@ -232,7 +232,7 @@
             </LinearLayout>
 
 
-        </RelativeLayout>
+        </ScrollView>
 
 
     </RelativeLayout>

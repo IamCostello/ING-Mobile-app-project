@@ -1,8 +1,11 @@
 package com.example.kotlinpostapi
 
 import android.app.Application
+import android.content.Context
 import com.example.kotlinpostapi.Albums.AlbumViewModel
 import com.example.kotlinpostapi.Comments.CommentsListViewModel
+import com.example.kotlinpostapi.Database.PostDao
+import com.example.kotlinpostapi.Database.PostDatabase
 import com.example.kotlinpostapi.Posts.PostViewModel
 import com.example.kotlinpostapi.Users.UserViewModel
 import com.example.kotlinpostapi.network.PostApi
@@ -18,8 +21,9 @@ import org.koin.dsl.module
 class App : Application() {
     private var listOfModules = module {
         single { PostApi(androidContext()) }
+        single { providePostDao(get()) }
         single { provideApiService(get()) }
-        single { PostRepository(postApiService = get()) }
+        single { PostRepository(postDao = get(), postApiService = get()) }
         single { CommentsRepository(postApiService = get()) }
         single { UserRepository(postApiService = get()) }
         single { AlbumRepository(albumApiService = get()) }
@@ -44,5 +48,9 @@ class App : Application() {
     }
     private fun provideApiService(api: PostApi) : PostApiService{
         return api.getPostApiService()
+    }
+    //TODO use it instead of get()
+    private fun providePostDao(context: Context): PostDao{
+        return PostDatabase.getPostDatabase(context).PostDao()
     }
 }
