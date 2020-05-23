@@ -1,2 +1,65 @@
 package com.example.kotlinpostapi.util
 
+import androidx.paging.PagedList
+import com.example.kotlinpostapi.apiObjects.Post
+import com.example.kotlinpostapi.network.PostApiService
+import com.example.kotlinpostapi.repository.PostRepository
+import kotlinx.coroutines.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+
+class PostBoundaryCallback (
+    private val postRepository: PostRepository,
+    private val postApiService: PostApiService,
+    private val pageSize: Int
+) : PagedList.BoundaryCallback<Post>() {
+
+    val helper = PagingRequestHelper(Dispatchers.IO.asExecutor())
+    val networkState = helper.createStatusLiveData()
+
+    override fun onZeroItemsLoaded() {
+//        GlobalScope.launch {
+//            val response = postRepository.getNextPosts()
+//            insertIntoDb(response)
+//        }
+//        helper.runIfNotRunning(PagingRequestHelper.RequestType.INITIAL) {
+//            postApiService.getNextPostsCall(0, pageSize).enqueue(postApiCallback(it))
+//            println("Get next post for 0")
+//        }
+    }
+
+    override fun onItemAtEndLoaded(itemAtEnd: Post) {
+        helper.runIfNotRunning(PagingRequestHelper.RequestType.AFTER) {
+            GlobalScope.launch {
+                val start = postRepository.getNextIndex()
+                postApiService.getNextPostsCall(start, pageSize).enqueue(postApiCallback(it))
+                println("Get next post for $start")
+            }
+        }
+    }
+
+    override fun onItemAtFrontLoaded(itemAtFront: Post) {
+        //
+    }
+
+    private fun insertIntoDb(response: Response<List<Post>>, it: PagingRequestHelper.Request.Callback) {
+        GlobalScope.launch {
+            postRepository.insertResultIntoDb(response.body() ?: listOf())
+            it.recordSuccess()
+        }
+    }
+
+    private fun postApiCallback(it: PagingRequestHelper.Request.Callback) : Callback<List<Post>> {
+        return object : Callback<List<Post>> {
+            override fun onFailure(call: Call<List<Post>>, t: Throwable) {
+                it.recordFailure(t)
+            }
+
+            override fun onResponse(call: Call<List<Post>>, response: Response<List<Post>>) {
+                insertIntoDb(response, it)
+                response.body()?.forEach { println(it?.id) }
+            }
+        }
+    }
+}

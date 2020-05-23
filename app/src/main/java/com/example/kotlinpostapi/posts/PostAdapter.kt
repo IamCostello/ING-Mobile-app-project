@@ -1,28 +1,27 @@
-package com.example.kotlinpostapi.Posts
+package com.example.kotlinpostapi.posts
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.kotlinpostapi.Navigation.OnPostClickListener
+import com.example.kotlinpostapi.Navigation.OnUserClickListener
 import com.example.kotlinpostapi.apiObjects.Post
 import com.example.kotlinpostapi.databinding.PostViewBinding
+import com.example.kotlinpostapi.util.NetworkState
+import com.example.kotlinpostapi.util.PostDiffUtil
 import kotlinx.android.synthetic.main.post_view.view.*
-import com.example.kotlinpostapi.Navigation.*
+
 
 class PostAdapter(
-    private var posts: List<Post>,
     var onUserClickListener: OnUserClickListener,
     var onPostClickListener: OnPostClickListener
-) : RecyclerView.Adapter<PostAdapter.PostsViewHolder>(){
+) : PagedListAdapter<Post, PostAdapter.PostsViewHolder>(PostDiffUtil) {
+
+    private var networkState: NetworkState? = null
 
     inner class PostsViewHolder(binding: PostViewBinding, OnUserClickListener: OnUserClickListener, OnPostClickListener: OnPostClickListener) : RecyclerView.ViewHolder(binding.root) {
         private val binding: PostViewBinding = binding
-        private val onUserClickListener = OnUserClickListener
-        private val onPostClickListener = OnPostClickListener
-
-        init{
-            itemView.username.setOnClickListener { onUserClickListener.onUserClick(posts[adapterPosition].userId) }
-            itemView.show_comments_button.setOnClickListener{ onPostClickListener.onPostClick(posts[adapterPosition]) }
-        }
 
         fun bind(post: Post){
             binding.post = post
@@ -34,17 +33,16 @@ class PostAdapter(
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = PostViewBinding.inflate(layoutInflater)
 
+
         return PostsViewHolder(binding, onUserClickListener, onPostClickListener)
     }
 
-    override fun getItemCount(): Int {
-        return posts.size
-    }
-
-    override fun onBindViewHolder(holder: PostsViewHolder, position: Int) = holder.bind(posts[position])
-
-    fun updatePosts(posts: List<Post>){
-        this.posts = posts
-        notifyDataSetChanged()
+    override fun onBindViewHolder(holder: PostsViewHolder, position: Int) {
+        val post: Post? = getItem(position)
+        if (post != null) {
+            holder.bind(post)
+            holder.itemView.username.setOnClickListener { onUserClickListener.onUserClick(post.userId) }
+            holder.itemView.show_comments_button.setOnClickListener { onPostClickListener.onPostClick(post) }
+        }
     }
 }

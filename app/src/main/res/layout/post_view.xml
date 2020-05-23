@@ -5,6 +5,7 @@
             name="post"
             type="com.example.kotlinpostapi.apiObjects.Post" />
     </data>
+
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -19,7 +20,7 @@
             android:id="@+id/username"
             android:textSize="24sp"
             android:textColor="@color/colorGreen"
-            android:text="@{post.username}"
+            android:text="@{`[UserID] ` + post.userId + ` [PostID] ` + post.id}"
             android:layout_marginBottom="2.5dp"/>
         <TextView
             android:layout_width="match_parent"
@@ -38,7 +39,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{post.commentsCount + ` show comments`}"
+            android:text="@{`show comments`}"
             android:id="@+id/show_comments_button"/>
 
     </LinearLayout>

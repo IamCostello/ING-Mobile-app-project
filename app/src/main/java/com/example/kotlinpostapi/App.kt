@@ -2,16 +2,19 @@ package com.example.kotlinpostapi
 
 import android.app.Application
 import android.content.Context
+import androidx.lifecycle.SavedStateHandle
 import com.example.kotlinpostapi.Albums.AlbumViewModel
 import com.example.kotlinpostapi.Comments.CommentsListViewModel
 import com.example.kotlinpostapi.Database.PostDao
 import com.example.kotlinpostapi.Database.PostDatabase
-import com.example.kotlinpostapi.Posts.PostViewModel
+import com.example.kotlinpostapi.posts.PostViewModel
 import com.example.kotlinpostapi.Users.UserViewModel
 import com.example.kotlinpostapi.network.PostApi
 import com.example.kotlinpostapi.network.PostApiService
 import com.example.kotlinpostapi.photos.PhotoListViewModel
 import com.example.kotlinpostapi.repository.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -21,7 +24,7 @@ import org.koin.dsl.module
 class App : Application() {
     private var listOfModules = module {
         single { PostApi(androidContext()) }
-        single { providePostDao(get()) }
+        single { providePostDao(androidContext(), CoroutineScope(Dispatchers.IO)) }
         single { provideApiService(get()) }
         single { PostRepository(postDao = get(), postApiService = get()) }
         single { CommentsRepository(postApiService = get()) }
@@ -49,8 +52,8 @@ class App : Application() {
     private fun provideApiService(api: PostApi) : PostApiService{
         return api.getPostApiService()
     }
-    //TODO use it instead of get()
-    private fun providePostDao(context: Context): PostDao{
-        return PostDatabase.getPostDatabase(context).PostDao()
+
+    private fun providePostDao(context: Context, scope: CoroutineScope): PostDao {
+        return PostDatabase.getPostDatabase(context, scope).PostDao()
     }
 }
