@@ -5,9 +5,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.Glide.with
 import com.example.kotlinpostapi.R
 import com.example.kotlinpostapi.apiObjects.Photo
 import com.example.kotlinpostapi.databinding.PhotoViewBinding
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.photo_view.view.*
 
 class PhotoAdapter(private var photos: List<Photo>) : RecyclerView.Adapter<PhotoAdapter.PhotoViewHolder>(){
@@ -18,7 +20,11 @@ class PhotoAdapter(private var photos: List<Photo>) : RecyclerView.Adapter<Photo
             binding.photo= photo
             binding.executePendingBindings()
 
-            Glide.with(binding.root)
+//            Glide.with(binding.root)
+//                .load(photo.url)
+//                .into(binding.photoImageView)
+            Picasso
+                .get()
                 .load(photo.url)
                 .into(binding.photoImageView)
         }
