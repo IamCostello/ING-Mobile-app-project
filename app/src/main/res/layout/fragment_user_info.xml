@@ -8,6 +8,9 @@
         <variable
             name="user"
             type="com.example.kotlinpostapi.apiObjects.User" />
+        <variable
+            name="address"
+            type="com.example.kotlinpostapi.apiObjects.Address" />
     </data>
 
     <RelativeLayout
@@ -60,7 +63,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="15sp"
                 android:layout_marginBottom="15dp"
-                android:text="CITY"
+                android:text="@{address.city}"
                 android:textSize="14sp"
                 android:fontFamily="sans-serif-light"/>
 
