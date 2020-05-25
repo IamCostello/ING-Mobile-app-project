@@ -8,6 +8,7 @@ import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import kotlin.coroutines.coroutineContext
 
 class PostBoundaryCallback (
     private val postRepository: PostRepository,
@@ -19,10 +20,6 @@ class PostBoundaryCallback (
     val networkState = helper.createStatusLiveData()
 
     override fun onZeroItemsLoaded() {
-//        GlobalScope.launch {
-//            val response = postRepository.getNextPosts()
-//            insertIntoDb(response)
-//        }
 //        helper.runIfNotRunning(PagingRequestHelper.RequestType.INITIAL) {
 //            postApiService.getNextPostsCall(0, pageSize).enqueue(postApiCallback(it))
 //            println("Get next post for 0")
@@ -31,10 +28,10 @@ class PostBoundaryCallback (
 
     override fun onItemAtEndLoaded(itemAtEnd: Post) {
         helper.runIfNotRunning(PagingRequestHelper.RequestType.AFTER) {
-            GlobalScope.launch {
-                val start = postRepository.getNextIndex()
-                postApiService.getNextPostsCall(start, pageSize).enqueue(postApiCallback(it))
-                println("Get next post for $start")
+            CoroutineScope(Dispatchers.IO).launch {
+                    val start = postRepository.getNextIndex()
+                    postApiService.getNextPostsCall(start, pageSize).enqueue(postApiCallback(it))
+                    println("Get next post for $start")
             }
         }
     }
@@ -44,7 +41,7 @@ class PostBoundaryCallback (
     }
 
     private fun insertIntoDb(response: Response<List<Post>>, it: PagingRequestHelper.Request.Callback) {
-        GlobalScope.launch {
+        CoroutineScope(Dispatchers.IO).launch {
             postRepository.insertResultIntoDb(response.body() ?: listOf())
             it.recordSuccess()
         }

@@ -10,13 +10,13 @@ interface PostDao{
     suspend fun insertPost(post: Post)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertPost(posts: List<Post>?)
+    fun insertPost(posts: List<Post>?)
 
     @Delete
     suspend fun deletePost(post: Post)
 
     @Query("DELETE FROM Post WHERE id IS not null")
-    suspend fun clearCache()
+    fun clearCache()
 
     @Query("DELETE FROM Post")
     suspend fun clearDB()

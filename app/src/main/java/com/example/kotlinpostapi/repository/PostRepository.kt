@@ -12,6 +12,8 @@ import com.example.kotlinpostapi.util.PostBoundaryCallback
 import com.example.kotlinpostapi.util.Result
 import androidx.lifecycle.switchMap
 import com.example.kotlinpostapi.util.NetworkState
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.lang.Exception
@@ -37,7 +39,7 @@ class PostRepository(private val postDao: PostDao, private val postApiService: P
         }
     }
 
-    suspend fun insertResultIntoDb(posts: List<Post>) {
+    fun insertResultIntoDb(posts: List<Post>) {
         postDao.insertPost(posts)
     }
 
@@ -47,7 +49,7 @@ class PostRepository(private val postDao: PostDao, private val postApiService: P
     private fun refresh(): LiveData<NetworkState> {
         val networkState = MutableLiveData<NetworkState>()
 
-        GlobalScope.launch {
+        CoroutineScope(Dispatchers.IO).launch {
             networkState.postValue(NetworkState.LOADING)
             try {
                 val response = postApiService.getNextPosts(0, DEFAULT_PAGE_SIZE).await()
