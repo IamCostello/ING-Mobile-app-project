@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.kotlinpostapi.R
 import com.example.kotlinpostapi.apiObjects.Photo
 import com.example.kotlinpostapi.databinding.PhotoViewBinding
 
@@ -13,14 +12,13 @@ class PhotoAdapter(private var photos: List<Photo>) : RecyclerView.Adapter<Photo
     inner class PhotoViewHolder(private val binding: PhotoViewBinding) : RecyclerView.ViewHolder(binding.root){
 
         fun bind(photo: Photo){
-            binding.photo = photo
+            binding.photo.url = photo.url
             binding.executePendingBindings()
 
-            Glide.with(binding.photoCardImage)
-                .load(photo.thumbnailUrl)
-                .into(binding.photoCardImage)
-
-
+            
+            Glide.with()
+                .load(photo.url)
+                .into(binding.photoImageView)
         }
     }
 
