@@ -42,7 +42,7 @@ class PhotoList : Fragment() {
 
     private fun setupRecyclerView() {
         val rView: RecyclerView = binding.photoView
-        val layoutManager = GridLayoutManager(activity, GridLayoutManager.VERTICAL)
+        val layoutManager = GridLayoutManager(activity,2)
         rView.layoutManager = layoutManager
         rView.addItemDecoration(PostListDecorator(12,24))
 
