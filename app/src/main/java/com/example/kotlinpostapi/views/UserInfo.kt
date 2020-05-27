@@ -31,10 +31,8 @@ class UserInfo : Fragment(), Navigation.OnAlbumClickListener, Navigation.OnMapCl
         observeLiveData()
         getUserData(args.userId)
 
-        binding.showAlbumsButton.setOnClickListener(View.OnClickListener { onAlbumClick(args.userId) })
-        binding.showMapButton.setOnClickListener(View.OnClickListener { onMapClick(userData.address?.geo?.lat,
-            userData.address?.geo?.lng
-        ) })
+        binding.albumIcon.setOnClickListener(View.OnClickListener { onAlbumClick(args.userId) })
+        binding.mapIcon.setOnClickListener(View.OnClickListener { onMapClick(userData.address?.geo?.lat, userData.address?.geo?.lng) })
 
 
         return binding.root
