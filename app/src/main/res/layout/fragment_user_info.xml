@@ -4,244 +4,122 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="user"
             type="com.example.kotlinpostapi.apiObjects.User" />
+
         <variable
             name="address"
             type="com.example.kotlinpostapi.apiObjects.Address" />
     </data>
-<ScrollView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    >
+
     <RelativeLayout
+        android:id="@+id/XD"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".views.UserInfo">
+        android:layout_height="match_parent">
 
-        <RelativeLayout
-            android:id="@+id/layout_icon_u"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/grad">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:background="@color/colorGreen">
 
+    </View>
             <RelativeLayout
-                android:id="@+id/icon_u"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/circle_border">
-
-                <ImageView
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    android:layout_margin="9dp"
-                    android:adjustViewBounds="true"
-                    android:background="@drawable/circle"
-                    android:padding="3dp"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/user_icon" />
-
-            </RelativeLayout>
-
-            <TextView
-                android:id="@+id/userFullName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/icon_u"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="15sp"
-                android:fontFamily="sans-serif-light"
-                android:text="@{user.name}"
-                android:textSize="24sp" />
-            <TextView
-                android:id="@+id/userCity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/userFullName"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="15sp"
-                android:layout_marginBottom="15dp"
-                android:text="@{address.city}"
-                android:textSize="14sp"
-                android:fontFamily="sans-serif-light"/>
-
-
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="477dp"
-            android:layout_below="@id/layout_icon_u">
-
-            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginRight="20dp"
-                android:orientation="vertical">
+                android:layout_marginLeft="20dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/user_icon"
+                    android:layout_centerHorizontal="true"
+                    android:elevation="2dp"
+                    app:civ_border_width="1dp"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/username"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:id="@+id/username"
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-light"
-                        android:text="@{user.username}"
-                        android:textSize="18sp" />
+                        android:layout_marginTop="85dp"
+                        app:cardCornerRadius="10dp"
+                        app:contentPaddingTop="15dp"
+                        app:contentPaddingBottom="15dp"
+                        app:contentPaddingLeft="15dp"
+                        app:contentPaddingRight="15dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:id="@+id/username"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_marginTop="60dp"
+                                    android:fontFamily="sans-serif-light"
+                                    android:text="@{user.name}"
+                                    android:textSize="25sp"
+                                    android:textStyle="bold" />
+                                <TextView
+                                    android:id="@+id/usercity"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_marginTop="10dp"
+                                    android:fontFamily="sans-serif-light"
+                                    android:text="CITY"
+                                    android:textSize="17sp"/>
+
+                            </LinearLayout>
 
 
-                </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/e_mail"
-                        android:textSize="12sp" />
+                    </androidx.cardview.widget.CardView>
 
-                    <TextView
-                        android:id="@+id/userEmail"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/linearLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-light"
-                        android:text="@{user.email}"
-                        android:textSize="18sp" />
+                        android:layout_marginTop="20dp">
+
+                        <Button
+                            android:id="@+id/show_albums_button"
+                            android:layout_width="146dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="112dp"
+                            android:text="@string/show_albums"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" />
 
 
-                </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/phone"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:id="@+id/userPhone"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/linearLay"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-light"
-                        android:text="@{user.phone}"
-                        android:textSize="18sp" />
+                        android:layout_height="wrap_content">
 
+                        <Button
+                            android:id="@+id/show_map_button"
+                            android:layout_width="146dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="112dp"
+                            android:text="@string/show_map"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
+                    </androidx.constraintlayout.widget.ConstraintLayout>
                 </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/website"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:id="@+id/userWebsite"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-light"
-                        android:text="@{user.website}"
-                        android:textSize="18sp" />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/company"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:id="@+id/userCompany"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-light"
-                        android:text="@{user.company.name}"
-                        android:textSize="18sp" />
-
-
-                </LinearLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/linearLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp">
-
-                    <Button
-                        android:id="@+id/show_albums_button"
-                        android:layout_width="146dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="112dp"
-                        android:text="@string/show_albums"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
-
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/linearLay"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <Button
-                        android:id="@+id/show_map_button"
-                        android:layout_width="146dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="112dp"
-                        android:text="@string/show_map"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </LinearLayout>
-
-
-        </RelativeLayout>
-
-
+            </RelativeLayout>
     </RelativeLayout>
-</ScrollView>
 </layout>
