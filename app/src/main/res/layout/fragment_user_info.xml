@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
             name="user"
             type="com.example.kotlinpostapi.apiObjects.User" />
-
         <variable
             name="address"
             type="com.example.kotlinpostapi.apiObjects.Address" />
@@ -16,20 +15,17 @@
     <RelativeLayout
         android:id="@+id/XD"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="match_parent"
         android:background="@color/colorGreen">
 
-    </View>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp">
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="10dp">
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="120dp"
@@ -41,12 +37,12 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="vertical">
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_marginTop="85dp"
                         app:cardCornerRadius="10dp"
                         app:contentPaddingTop="15dp"
@@ -54,33 +50,50 @@
                         app:contentPaddingLeft="15dp"
                         app:contentPaddingRight="15dp">
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginTop="40dp">
+                            <TextView
+                                android:id="@+id/username_text"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical">
-                                <TextView
-                                    android:id="@+id/username"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal"
-                                    android:layout_marginTop="60dp"
-                                    android:fontFamily="sans-serif-light"
-                                    android:text="@{user.name}"
-                                    android:textSize="25sp"
-                                    android:textStyle="bold" />
-                                <TextView
-                                    android:id="@+id/usercity"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal"
-                                    android:layout_marginTop="10dp"
-                                    android:fontFamily="sans-serif-light"
-                                    android:text="CITY"
-                                    android:textSize="17sp"/>
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="35dp"
+                                android:fontFamily="sans-serif-light"
+                                android:text="@{user.username}"
+                                android:textSize="25sp"
+                                android:textStyle="bold" />
+                            <TextView
+                                android:id="@+id/usercity_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="10dp"
+                                android:fontFamily="sans-serif-light"
+                                android:text="CITY"
+                                android:textSize="17sp" />
+                        </LinearLayout>
 
-                            </LinearLayout>
-
-
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <ImageView
+                                android:id="@+id/album_icon"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_marginStart="15dp"
+                                android:src="@drawable/album" />
+                            <ImageView
+                                android:id="@+id/map_icon"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginEnd="15dp"
+                                android:src="@drawable/location" />
+                        </RelativeLayout>
 
 
                     </androidx.cardview.widget.CardView>
@@ -90,7 +103,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp">
-
                         <Button
                             android:id="@+id/show_albums_button"
                             android:layout_width="146dp"
@@ -99,15 +111,11 @@
                             android:text="@string/show_albums"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent" />
-
-
                     </androidx.constraintlayout.widget.ConstraintLayout>
-
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/linearLay"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
-
                         <Button
                             android:id="@+id/show_map_button"
                             android:layout_width="146dp"
@@ -117,7 +125,6 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
-
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </LinearLayout>
             </RelativeLayout>
