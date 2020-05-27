@@ -89,8 +89,8 @@
 
                             <ImageView
                                 android:id="@+id/name_icon"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
                                 android:src="@drawable/pass" />
 
                             <TextView
@@ -112,8 +112,8 @@
 
                             <ImageView
                                 android:id="@+id/phone_icon"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
                                 android:layout_marginTop="10dp"
                                 android:src="@drawable/phone" />
 
@@ -137,8 +137,8 @@
 
                             <ImageView
                                 android:id="@+id/email_icon"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
                                 android:layout_marginTop="10dp"
                                 android:src="@drawable/mail" />
 
@@ -162,8 +162,8 @@
 
                             <ImageView
                                 android:id="@+id/web_icon"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
                                 android:layout_marginTop="10dp"
                                 android:src="@drawable/web" />
 
@@ -187,8 +187,8 @@
 
                             <ImageView
                                 android:id="@+id/company_icon"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
                                 android:layout_marginTop="10dp"
                                 android:src="@drawable/company" />
 

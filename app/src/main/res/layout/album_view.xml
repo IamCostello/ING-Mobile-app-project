@@ -1,44 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 <data>
     <variable
         name="album"
         type="com.example.kotlinpostapi.apiObjects.Album" />
 </data>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:padding="15dp">
 
+    <ImageView
+        android:id="@+id/album_view_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/album_view"/>
     <TextView
+        android:id="@+id/album_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/albumID"
-        android:text="@{`Album ID: ` + album.id}" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_marginBottom="2dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="10dp"
+        android:ellipsize="end"
         android:fontFamily="sans-serif-medium"
         android:gravity="center_vertical"
-        android:ellipsize="end"
-        android:maxLines="2"
-        android:textSize="16sp"
-        android:textColor="@color/colorPrimary"
-        android:layout_marginBottom="2dp"
-        android:text="@{album.title}" />
-
-    <Button android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/show_photos"
-        android:id="@+id/show_photos_button"/>
-
-
-
-</LinearLayout>
+        android:maxLines="5"
+        android:text="@{album.title}"
+        android:textColor="@color/colorText"
+        android:textSize="17sp" />
+</RelativeLayout>
 </layout>
