@@ -7,6 +7,7 @@ import com.example.kotlinpostapi.apiObjects.Album
 import com.example.kotlinpostapi.apiObjects.User
 import com.example.kotlinpostapi.repository.AlbumRepository
 import com.example.kotlinpostapi.repository.UserRepository
+import com.example.kotlinpostapi.util.EspressoIdlingResource
 import com.example.kotlinpostapi.util.Result
 import com.example.kotlinpostapi.util.ResultType
 import kotlinx.coroutines.launch
@@ -25,21 +26,25 @@ class AlbumViewModel(
 
     fun getAlbums(user: User) {
         Timber.d("getAlbums")
+        EspressoIdlingResource.increment()
         viewModelScope.launch {
             val apiResult = albumRepository.getAlbums()
             val uiResult =
                 Result(apiResult.resultType, apiResult.data?.filter { it.userId == user.id })
             updateAlbumsLiveViewData(uiResult)
+            EspressoIdlingResource.decrement()
         }
     }
 
     fun getUser(userId: Int) {
 
+        EspressoIdlingResource.increment()
         viewModelScope.launch {
             val apiResult = userRepository.getUserList()
             val uiResult =
                 Result(apiResult.resultType, apiResult.data?.filter { it.id == userId }?.first())
             updateUserLiveData(uiResult)
+            EspressoIdlingResource.decrement()
         }
     }
 
