@@ -13,7 +13,7 @@ import com.example.kotlinpostapi.databinding.FragmentUserInfoBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import androidx.navigation.fragment.findNavController
 import com.example.kotlinpostapi.Navigation
-import com.example.kotlinpostapi.apiObjects.Geo
+
 
 class UserInfo : Fragment(), Navigation.OnAlbumClickListener, Navigation.OnMapClickListener {
     private val userViewModel: UserViewModel by viewModel()
