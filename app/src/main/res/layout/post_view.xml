@@ -19,7 +19,7 @@
             android:id="@+id/username"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorPrimaryDark"
             android:text="@{post.username}"
             android:layout_marginBottom="2.5dp"/>
         <TextView
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:textSize="12sp"
-            android:textColor="@color/colorPrimaryText"
+            android:textColor="@color/colorSecondaryText"
             android:layout_marginBottom="4dp"
             android:text="@{post.body}" />
 
@@ -53,7 +53,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:textColor="@color/colorSecondaryText"
+                android:textColor="@color/colorPrimaryText"
                 android:text="@{post.commentsCount + ` show comments`}"
                 android:id="@+id/show_comments_button"/>
         </RelativeLayout>

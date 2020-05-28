@@ -15,8 +15,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".views.MainActivity"
-        android:background="@color/colorPrimaryLight">
+        tools:context=".views.MainActivity">
 
 
         <androidx.recyclerview.widget.RecyclerView
