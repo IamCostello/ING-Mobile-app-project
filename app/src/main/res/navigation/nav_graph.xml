@@ -11,26 +11,30 @@
         android:label="PostList" >
         <action
             android:id="@+id/action_postList_to_userInfo"
-            app:destination="@id/userInfo" />
+            app:destination="@id/userInfo"
+            app:popEnterAnim="@android:anim/fade_in" />
         <action
             android:id="@+id/action_postList_to_commentsList"
-            app:destination="@id/commentsList" />
+            app:destination="@id/commentsList"
+            app:popEnterAnim="@android:anim/fade_in" />
     </fragment>
     <fragment
         android:id="@+id/userInfo"
         android:name="com.example.kotlinpostapi.views.UserInfo"
-        android:label="fragment_user_info"
-        tools:layout="@layout/fragment_user_info" >
+        android:label="fragment_user_info">
         <argument
             android:name="userId"
             app:argType="integer" />
 
         <action
             android:id="@+id/action_userInfo_to_albumList"
-            app:destination="@id/albumsList"/>
+            app:destination="@id/albumsList" />
         <action
             android:id="@+id/action_userInfo_to_map"
             app:destination="@id/map" />
+        <action
+            android:id="@+id/action_userInfo_to_postList"
+            app:destination="@id/postList" />
     </fragment>
     <fragment
         android:id="@+id/commentsList"
@@ -71,6 +75,13 @@
             app:argType="string" />
         <argument
             android:name="userLng"
+            app:argType="string" />
+        <argument
+            android:name="street"
+            app:argType="string" />
+        <argument android:name="city"
+            app:argType="string" />
+        <argument android:name="suite"
             app:argType="string" />
     </fragment>
 

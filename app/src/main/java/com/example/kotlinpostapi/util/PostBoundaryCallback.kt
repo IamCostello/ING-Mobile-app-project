@@ -8,7 +8,6 @@ import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import kotlin.coroutines.coroutineContext
 
 class PostBoundaryCallback (
     private val postRepository: PostRepository,
@@ -54,8 +53,14 @@ class PostBoundaryCallback (
             }
 
             override fun onResponse(call: Call<List<Post>>, response: Response<List<Post>>) {
-                insertIntoDb(response, it)
-                response.body()?.forEach { println(it?.id) }
+                CoroutineScope(Dispatchers.IO).launch {
+                    val userList = postRepository.getUserNamesList()
+                    //val posts = postRepository.getPosts()
+                    //val commentCount = postRepository.getCommentCount(posts.data)
+                    response.body()?.map { it.username = userList[it.userId!!-1] }
+                    //response.body()?.map { it.commentsCount = commentCount[it.id!!-1] }
+                    insertIntoDb(response, it)
+                }
             }
         }
     }

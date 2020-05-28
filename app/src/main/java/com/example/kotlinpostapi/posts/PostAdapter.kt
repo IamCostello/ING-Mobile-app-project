@@ -20,7 +20,7 @@ class PostAdapter(
 
     private var networkState: NetworkState? = null
 
-    inner class PostsViewHolder(binding: PostViewBinding, OnUserClickListener: OnUserClickListener, OnPostClickListener: OnPostClickListener) : RecyclerView.ViewHolder(binding.root) {
+    inner class PostsViewHolder(binding: PostViewBinding) : RecyclerView.ViewHolder(binding.root) {
         private val binding: PostViewBinding = binding
 
         fun bind(post: Post){
@@ -33,8 +33,7 @@ class PostAdapter(
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = PostViewBinding.inflate(layoutInflater)
 
-
-        return PostsViewHolder(binding, onUserClickListener, onPostClickListener)
+        return PostsViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: PostsViewHolder, position: Int) {

@@ -1,7 +1,5 @@
 package com.example.kotlinpostapi
 
-import android.renderscript.Double2
-import com.example.kotlinpostapi.apiObjects.Geo
 import com.example.kotlinpostapi.apiObjects.Post
 
 class Navigation {
@@ -22,6 +20,6 @@ class Navigation {
     }
 
     interface OnMapClickListener{
-        fun onMapClick(userLat:String?, userLng:String?)
+        fun onMapClick(userLat:String?, userLng:String?, street: String?, city: String?, suite: String?)
     }
 }

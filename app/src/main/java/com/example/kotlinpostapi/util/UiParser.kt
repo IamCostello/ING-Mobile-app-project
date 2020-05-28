@@ -6,21 +6,20 @@ import com.example.kotlinpostapi.apiObjects.User
 
 class UiParser {
     companion object{
-        fun getUsernames(result: Result<List<User>>): Result<List<String>> {
-            val userList: List<String> = result.data!!.map{ it.name!! }
-            return Result(result.resultType, userList)
+        fun getUsernames(result: Result<List<User>>): List<String> {
+            return result.data!!.map{ it.username!! }
         }
 
-        fun getCommentsCount(postList: List<Post>?, result: Result<List<Comment>>): Result<List<Int>> {
+        fun getCommentsCount(postList: List<Post>?, result: Result<List<Comment>>): List<Int> {
             val commentAmountList: MutableList<Int> = mutableListOf()
 
             postList?.forEach { element ->
                 run {
-                    commentAmountList.add(result.data!!.count { it.postId == element.id })
+                    commentAmountList.add(result.data?.count { it.postId == element.id } ?: 0)
                 }
             }
 
-            return Result(result.resultType, commentAmountList)
+            return commentAmountList
         }
     }
 }

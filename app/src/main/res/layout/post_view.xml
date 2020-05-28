@@ -20,7 +20,7 @@
             android:id="@+id/username"
             android:textSize="24sp"
             android:textColor="@color/colorGreen"
-            android:text="@{`[UserID] ` + post.userId + ` [PostID] ` + post.id}"
+            android:text="@{post.username}"
             android:layout_marginBottom="2.5dp"/>
         <TextView
             android:layout_width="match_parent"
@@ -39,7 +39,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{`show comments`}"
+            android:text="Show comments"
             android:id="@+id/show_comments_button"/>
 
     </LinearLayout>

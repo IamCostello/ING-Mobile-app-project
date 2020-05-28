@@ -75,11 +75,15 @@ class PostList() : Fragment(), Navigation.OnUserClickListener, Navigation.OnPost
     private fun onNetworkStateChange(state: NetworkState) {
         when(state) {
             NetworkState.error("Failed loading data") -> {
-                android.app.AlertDialog.Builder(activity).setTitle("Błąd").setCancelable(false)
-                    .setNegativeButton("Anuluj") { _,
+                android.app.AlertDialog.Builder(activity, 5)
+                    .setTitle("Network error")
+                    .setMessage("Something went wrong loading data")
+                    .setCancelable(false)
+                    .setNegativeButton("Retry") { _,
                                                    _ ->
-                        activity?.finish()
-                    }.setPositiveButton("Spróbuj ponownie") { _, _ -> viewModel.retry() }.show()
+                        viewModel.retry()
+                    }.setPositiveButton("Ok") { _, _ ->  }
+                    .show()
             }
         }
     }
