@@ -1,6 +1,7 @@
 package com.example.kotlinpostapi.firebase
 
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -14,43 +15,77 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
-class Register : Fragment(),Navigation.OnExistingUserClickListener, Navigation.OnRegisterClickListener {
-    private lateinit var auth:FirebaseAuth
-    private lateinit var binding:FragmentRegisterBinding
+class Register : Fragment(), Navigation.OnExistingUserClickListener,
+    Navigation.OnRegisterClickListener {
+    private lateinit var email: String
+    private lateinit var password: String
+    private lateinit var username: String
+    private lateinit var binding: FragmentRegisterBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        auth = Firebase.auth
+
     }
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = FragmentRegisterBinding.inflate(inflater,container,false)
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentRegisterBinding.inflate(inflater, container, false)
         binding.registerButton.setOnClickListener(View.OnClickListener { onRegisterClick() })
         binding.backToLogin.setOnClickListener(View.OnClickListener { onExistingClick() })
         return binding.root
     }
 
     override fun onExistingClick() {
-       findNavController().navigate(RegisterDirections.actionAuthRegisterToAuthLogin5())
+
+        findNavController().navigate(RegisterDirections.actionAuthRegisterToAuthLogin5())
     }
 
     override fun onRegisterClick() {
-        val email = binding.registerUserEmail.text.toString()
-        val password = binding.registerUserPassword.text.toString()
+
+        if (validateForm()) {
+            
+
+            //findNavController().navigate(RegisterDirections.actionAuthLoginToPostList())
 
 
-        Log.d("Login ","Email is" + email)
-        Log.d("Password ","Password is" + password)
-
-
-        if(email.isNotEmpty() && password.isNotEmpty() && password.length >= 6) {
-            auth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener {
-                    if (it.isSuccessful) return@addOnCompleteListener
-                    Log.d("proba", "Created or no ${it.result!!.user!!.uid}")
-                }
-                
         }
+
+
     }
 
+    private fun validateForm(): Boolean {
+        var valid = true
+
+
+        username = binding.registerUsername.text.toString()
+        if (TextUtils.isEmpty(username) || username.length < 6) {
+            binding.registerUsername.error = "Required, at least 6 characters."
+            valid = false
+        } else {
+            binding.registerUsername.error = null
+        }
+
+
+        email = binding.registerUserEmail.text.toString()
+        if (TextUtils.isEmpty(email) || (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches())) {
+            binding.registerUserEmail.error = "Required."
+            valid = false
+        } else {
+            binding.registerUserEmail.error = null
+        }
+
+        password = binding.registerUserPassword.text.toString()
+        if (TextUtils.isEmpty(password) || password.length < 6) {
+            binding.registerUserPassword.error = "Required, at least 6 characters."
+            valid = false
+        } else {
+            binding.registerUserPassword.error = null
+        }
+
+        return valid
+    }
 }

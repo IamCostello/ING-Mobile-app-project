@@ -1,6 +1,7 @@
 package com.example.kotlinpostapi.firebase
 
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -15,19 +16,35 @@ import com.google.firebase.ktx.Firebase
 import timber.log.Timber
 
 
-class Login : Fragment(), Navigation.OnLogInClickListener, Navigation.OnMoveToRegisterClickListener {
-    private lateinit var binding:FragmentLoginBinding
-    private lateinit var auth: FirebaseAuth
-    private lateinit var email:String
+class Login : Fragment(), Navigation.OnLogInClickListener,
+    Navigation.OnMoveToRegisterClickListener {
+    private lateinit var binding: FragmentLoginBinding
+
+    private lateinit var email: String
     private lateinit var password: String
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        auth = Firebase.auth
+        FirebaseHelper.signOut()
+        if(FirebaseHelper.getCurrentUser() != null){
+            findNavController().navigate(LoginDirections.actionAuthLoginToPostList())
+        }
     }
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = FragmentLoginBinding.inflate(inflater,container,false)
+
+    override fun onStart() {
+        super.onStart()
+
+        //findNavController().navigate(LoginDirections.actionAuthLoginToPostList())
+
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentLoginBinding.inflate(inflater, container, false)
         binding.loginButton.setOnClickListener(View.OnClickListener { onLogInClick() })
         binding.noAccountTextView.setOnClickListener(View.OnClickListener { onMoveToRegisterClick() })
 
@@ -35,26 +52,20 @@ class Login : Fragment(), Navigation.OnLogInClickListener, Navigation.OnMoveToRe
         return binding.root
     }
 
+
     override fun onLogInClick() {
 
-        email = binding.loginEmail.text.toString()
-        password = binding.loginUserPassword.text.toString()
+        if (validateForm()) {
+            Log.d("asa","i tak dziala nobek +" + validateForm())
+            FirebaseHelper.login(email, password)
+            if(FirebaseHelper.getCurrentUser() != null){
+                findNavController().navigate(LoginDirections.actionAuthLoginToPostList())
 
-
-        if(email.isNotEmpty() && password.isNotEmpty() && password.length >= 6) {
-           auth.signInWithEmailAndPassword(email,password)
-               .addOnCompleteListener{
-                   if(it.isSuccessful){
-                       val action = LoginDirections.actionAuthLoginToPostList()
-
-                       findNavController().navigate(action)
-                   }
-               }
+            }
         }
 
 
     }
-
 
 
     override fun onMoveToRegisterClick() {
@@ -62,6 +73,28 @@ class Login : Fragment(), Navigation.OnLogInClickListener, Navigation.OnMoveToRe
 
 
         findNavController().navigate(action)
+    }
+
+    private fun validateForm(): Boolean {
+        var valid = true
+
+        email = binding.loginEmail.text.toString()
+        if (TextUtils.isEmpty(email) || (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches())) {
+            binding.loginEmail.error = "Required."
+            valid = false
+        } else {
+            binding.loginEmail.error = null
+        }
+
+        password = binding.loginUserPassword.text.toString()
+        if (TextUtils.isEmpty(password) || password.length < 6) {
+            binding.loginUserPassword.error = "Required, at least 6 characters."
+            valid = false
+        } else {
+            binding.loginUserPassword.error = null
+        }
+
+        return valid
     }
 
 }

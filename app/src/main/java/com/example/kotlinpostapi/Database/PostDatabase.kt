@@ -10,7 +10,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 @Database(entities = [Post::class], version = 1, exportSchema = false)
-public abstract class PostDatabase() : RoomDatabase() {
+public abstract class
+PostDatabase() : RoomDatabase() {
     abstract fun PostDao(): PostDao
 
 //    private class PostDatabaseCallback(private val scope: CoroutineScope) : RoomDatabase.Callback() {
