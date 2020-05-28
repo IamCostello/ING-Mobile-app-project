@@ -14,7 +14,6 @@ import com.example.kotlinpostapi.R
 import com.example.kotlinpostapi.posts.PostAdapter
 import com.example.kotlinpostapi.util.EspressoIdlingResource
 import org.junit.After
-import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -40,6 +39,7 @@ class AlbumListTest{
     fun testIsDisplayingAlbumList(){
         onView(withId(R.id.posts_view)).perform(actionOnItemAtPosition<PostAdapter.PostsViewHolder>(4, MyMatchers.clickChildView(R.id.username)))
 
+        //TODO: change to album_icon
         onView(withId(R.id.show_albums_button)).perform(click())
 
         onView(withId(R.id.albums_view)).check(matches(isDisplayed()))

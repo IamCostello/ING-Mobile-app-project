@@ -1,7 +1,5 @@
 package com.example.kotlinpostapi.views
 
-import android.view.View
-import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.*
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.Espresso.pressBack
@@ -14,7 +12,6 @@ import com.example.kotlinpostapi.MyMatchers
 import com.example.kotlinpostapi.R
 import com.example.kotlinpostapi.posts.PostAdapter
 import com.example.kotlinpostapi.util.EspressoIdlingResource
-import org.hamcrest.Matcher
 import org.hamcrest.Matchers.greaterThan
 import org.junit.After
 import org.junit.Before
