@@ -3,8 +3,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/postList">
+    app:startDestination="@id/authLogin">
 
+
+    <fragment
+        android:id="@+id/authLogin"
+        android:name="com.example.kotlinpostapi.firebase.Login"
+        android:label="authUserLogin">
+        <action
+            android:id="@+id/action_authLogin_to_postList"
+            app:destination="@id/postList" />
+        <action
+            android:id="@+id/action_authLogin_to_authRegister"
+            app:destination="@id/authRegister" />
+    </fragment>
+    <fragment
+        android:id="@+id/authRegister"
+        android:name="com.example.kotlinpostapi.firebase.Register"
+        android:label="authUserRegister"
+       >
+        <action
+            android:id="@+id/action_authLogin_to_postList"
+            app:destination="@id/postList" />
+        <action
+            android:id="@+id/action_authRegister_to_authLogin5"
+            app:destination="@id/authLogin" />
+    </fragment>
     <fragment
         android:id="@+id/postList"
         android:name="com.example.kotlinpostapi.views.PostList"

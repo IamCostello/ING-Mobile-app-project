@@ -24,4 +24,22 @@ class Navigation {
     interface OnMapClickListener{
         fun onMapClick(userLat:String?, userLng:String?)
     }
+
+    interface OnLogInClickListener{
+        fun onLogInClick()
+    }
+
+    interface OnRegisterClickListener{
+        fun onRegisterClick()
+    }
+
+    interface OnExistingUserClickListener{
+        fun onExistingClick()
+    }
+
+    interface OnMoveToRegisterClickListener{
+        fun onMoveToRegisterClick()
+    }
+
+
 }

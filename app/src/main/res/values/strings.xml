@@ -11,4 +11,9 @@
     <string name="show_albums">Show albums</string>
     <string name="show_photos">Show photos</string>
     <string name="show_map">Show map</string>
+    <string name="password">Password</string>
+    <string name="register">Register</string>
+    <string name="existingAccount">Already have an account? Sign in</string>
+    <string name="signin">Log in</string>
+    <string name="noAccount">Don\'t have an account</string>
 </resources>

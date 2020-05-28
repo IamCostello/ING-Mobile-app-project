@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "22504071848",
+    "firebase_url": "https://ing-mobile-app-project-276112.firebaseio.com",
+    "project_id": "ing-mobile-app-project-276112",
+    "storage_bucket": "ing-mobile-app-project-276112.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:22504071848:android:d830bd57371fd0683ed89d",
+        "android_client_info": {
+          "package_name": "com.example.kotlinpostapi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "22504071848-e7risn0sru38k0nosaj1vo0cise3qgi4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZu14axQapwTIr-dGnFV_fV49hZQFAXQ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "22504071848-e7risn0sru38k0nosaj1vo0cise3qgi4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
