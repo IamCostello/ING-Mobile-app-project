@@ -9,9 +9,7 @@ Aplikacja tworzona w ramach współpracy z ING przez zespół w składzie:
   - View paging
 # Zadanie 2 ✅
 # Zadanie 3 ✅
-# Zadanie 4 todo:
-  - Photos view
-  - Map view
+# Zadanie 4 ✅
 # Zadanie 5 todo:
   - Firebase Authentication
   - Navigation Bar (MainPage | CreatePost | UserInfo)
