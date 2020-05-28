@@ -22,6 +22,7 @@ class PostAdapter(
         init{
             itemView.username.setOnClickListener { onUserClickListener.onUserClick(posts[adapterPosition].userId) }
             itemView.show_comments_button.setOnClickListener{ onPostClickListener.onPostClick(posts[adapterPosition]) }
+            itemView.comment_icon.setOnClickListener { onPostClickListener.onPostClick(posts[adapterPosition]) }
         }
 
         fun bind(post: Post){

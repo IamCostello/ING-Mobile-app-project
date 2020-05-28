@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="24sp"
-            android:textColor="@color/colorGreen"
+            android:textColor="@color/colorAccent"
             android:layout_marginBottom="2.5dp"
             android:text="@{comment.name}" />
 
@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="18sp"
-            android:textColor="@color/colorTeal"
+            android:textColor="@color/colorText"
             android:layout_marginBottom="2dp"
             android:text="@{comment.email}" />
 
@@ -32,7 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="12sp"
-            android:textColor="@color/colorGrey"
+            android:textColor="@color/colorPrimaryText"
             android:layout_marginBottom="4dp"
             android:text="@{comment.body}" />
 
