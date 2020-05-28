@@ -29,3 +29,9 @@ Aplikacja tworzona w ramach współpracy z ING przez zespół w składzie:
 <img src="https://user-images.githubusercontent.com/51888438/80132927-b7026000-859c-11ea-9756-a33f43a3c344.jpg" alt="album-screen" width="212px"/>
  <img src="https://user-images.githubusercontent.com/51888438/80133010-ddc09680-859c-11ea-9f50-a4b878c65a99.jpg" alt="photo-screen" width="212px"/>
  </p>
+
+### Icon sources
+Icons made by:
+- <a href="https://smashicons.com/" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+- <a href="https://www.flaticon.com/free-icon/album_2005062" title="Nikita Golubev">Nikita Golubev</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+- <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
