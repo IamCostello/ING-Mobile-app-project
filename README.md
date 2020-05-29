@@ -20,14 +20,17 @@ Aplikacja tworzona w ramach współpracy z ING przez zespół w składzie:
   - Design changes
 
 <p float="left">
-  <img src="https://user-images.githubusercontent.com/28679660/80126313-3723c800-8593-11ea-9c64-d5f6132d3e24.jpg" alt="main-screen" width="212px"/>
-  <img src="https://user-images.githubusercontent.com/28679660/80126327-3c811280-8593-11ea-89e4-61f381b1e280.jpg" alt="comment-screen" width="212px"/>
-  <img src="https://user-images.githubusercontent.com/28679660/80126342-40ad3000-8593-11ea-8c0f-30584f3652a8.jpg" alt="user-screen" width="212px"/>
+  <img src="https://user-images.githubusercontent.com/51888438/83238978-7a2b1980-a197-11ea-8e06-411c9739ad5b.jpg" alt="screen-icon" width="212px"/>
+ <img src="https://user-images.githubusercontent.com/51888438/83239583-6af89b80-a198-11ea-91e3-23c781d04d43.jpg" alt="home-screen" width="212px"/>
+  <img src="https://user-images.githubusercontent.com/51888438/83239151-be1e1e80-a197-11ea-85d0-3b1f91076887.jpg" alt="comment-screen" width="212px"/>
+  <img src="https://user-images.githubusercontent.com/51888438/83239199-d55d0c00-a197-11ea-9c60-2a3b75ec12f8.jpg" alt="user-screen" width="212px"/>
   <img src="https://user-images.githubusercontent.com/28679660/80126348-430f8a00-8593-11ea-8a52-237c21d7b0b2.jpg" alt="error-screen" width="212px"/>
+ <img src="https://user-images.githubusercontent.com/51888438/83239375-1523f380-a198-11ea-9f32-4d4035ab5c68.jpg" alt="map-screen" width="212px"/>
 </p>
 <p align="center">
-<img src="https://user-images.githubusercontent.com/51888438/80132927-b7026000-859c-11ea-9756-a33f43a3c344.jpg" alt="album-screen" width="212px"/>
- <img src="https://user-images.githubusercontent.com/51888438/80133010-ddc09680-859c-11ea-9f50-a4b878c65a99.jpg" alt="photo-screen" width="212px"/>
+<img src="https://user-images.githubusercontent.com/51888438/83239379-15bc8a00-a198-11ea-8b97-7e099595887e.jpg" alt="album-screen" width="212px"/>
+ <img src="https://user-images.githubusercontent.com/51888438/83239380-15bc8a00-a198-11ea-8977-ad448e3cd144.jpg" alt="photo-screen" width="212px"/>
+  <img src="https://user-images.githubusercontent.com/51888438/83239381-16552080-a198-11ea-94ec-f50913da1014.jpg" alt="zoom-photo-screen" width="212px"/>
  </p>
 
 ### Icon sources
