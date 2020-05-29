@@ -5,6 +5,7 @@ import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -48,6 +49,9 @@ class Register : Fragment(), Navigation.OnExistingUserClickListener,
             FirebaseHelper.getInstance()?.createUserWithEmailAndPassword(email, password)
                 ?.addOnCompleteListener {
                     if (it.isSuccessful) {
+                        binding.registerUserEmail.onEditorAction(EditorInfo.IME_ACTION_DONE)
+                        binding.registerUserPassword.onEditorAction(EditorInfo.IME_ACTION_DONE)
+                        binding.registerUsername.onEditorAction(EditorInfo.IME_ACTION_DONE)
                         findNavController().navigate(RegisterDirections.actionAuthLoginToPostList())
 
 

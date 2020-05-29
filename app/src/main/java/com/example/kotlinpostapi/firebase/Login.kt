@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -27,19 +28,13 @@ class Login : Fragment(), Navigation.OnLogInClickListener,
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        FirebaseHelper.signOut()
+       
         if(FirebaseHelper.getCurrentUser() != null){
             findNavController().navigate(LoginDirections.actionAuthLoginToPostList())
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-        if(FirebaseHelper.getCurrentUser() != null) {
-            findNavController().navigate(LoginDirections.actionAuthLoginToPostList())
-        }
 
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -60,6 +55,9 @@ class Login : Fragment(), Navigation.OnLogInClickListener,
         if (validateForm()) {
             FirebaseHelper.getInstance()?.signInWithEmailAndPassword(email,password)?.addOnCompleteListener{
                 if(it.isSuccessful){
+
+                    binding.loginEmail.onEditorAction(EditorInfo.IME_ACTION_DONE)
+                    binding.loginUserPassword.onEditorAction(EditorInfo.IME_ACTION_DONE)
                     findNavController().navigate(LoginDirections.actionAuthLoginToPostList())
                     return@addOnCompleteListener
 
