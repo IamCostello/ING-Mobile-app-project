@@ -11,18 +11,35 @@ import com.example.kotlinpostapi.Users.UserViewModel
 import com.example.kotlinpostapi.apiObjects.User
 import com.example.kotlinpostapi.databinding.FragmentUserInfoBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import androidx.navigation.fragment.findNavController
+import com.example.kotlinpostapi.Navigation
 
-class UserInfo : Fragment() {
+
+class UserInfo : Fragment(), Navigation.OnAlbumClickListener, Navigation.OnMapClickListener {
     private val userViewModel: UserViewModel by viewModel()
     private lateinit var binding: FragmentUserInfoBinding
     private lateinit var userData: User
     val args: UserInfoArgs by navArgs()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         binding = FragmentUserInfoBinding.inflate(inflater, container, false)
 
         observeLiveData()
         getUserData(args.userId)
+
+        binding.albumIcon.setOnClickListener(View.OnClickListener { onAlbumClick(args.userId) })
+        binding.mapIcon.setOnClickListener(View.OnClickListener { onMapClick(
+            userData.address?.geo?.lat,
+            userData.address?.geo?.lng,
+            userData.address?.street,
+            userData.address?.city,
+            userData.address?.suite
+        ) })
+
 
         return binding.root
     }
@@ -33,19 +50,42 @@ class UserInfo : Fragment() {
     }
 
     private fun onReceivedError() {
-        android.app.AlertDialog.Builder(activity).setTitle("Błąd").setCancelable(false)
-            .setNegativeButton("Anuluj") { _,
+        android.app.AlertDialog.Builder(activity, 5).setTitle("Network error").setCancelable(false)
+            .setNegativeButton("Exit") { _,
                                            _ ->
                 activity?.finish()
-            }.setPositiveButton("Spróbuj ponownie") { _, _ -> getUserData(args.userId) }.show()
+            }.setPositiveButton("Retry") { _, _ -> getUserData(args.userId) }.show()
     }
 
-    private fun onUserDataReceived(userData: User){
+    private fun onUserDataReceived(userData: User) {
         this.userData = userData
         binding.user = userData
     }
 
-    private fun getUserData(userId: Int){
+    private fun getUserData(userId: Int) {
         userViewModel.getUserData(userId)
     }
+
+    override fun onAlbumClick(userId: Int?) {
+        val action = userId?.let { UserInfoDirections.actionUserInfoToAlbumList(it) }
+
+        if (action != null) {
+            findNavController().navigate(action)
+        }
+    }
+
+
+    override fun onMapClick(
+        userLat: String?,
+        userLng: String?,
+        street: String?,
+        city: String?,
+        suite: String?
+    ) {
+        val action = UserInfoDirections.actionUserInfoToMap(userLat ?: "" , userLng ?: "", street?: "", city?: "", suite?: "")
+        findNavController().navigate(action)
+    }
 }
+
+
+

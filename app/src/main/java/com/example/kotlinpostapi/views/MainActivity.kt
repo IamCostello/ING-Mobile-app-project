@@ -1,7 +1,7 @@
 package com.example.kotlinpostapi.views
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.kotlinpostapi.R
 
 class MainActivity : AppCompatActivity() {

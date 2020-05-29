@@ -1,12 +1,13 @@
 package com.example.kotlinpostapi.network
 
 import android.content.Context
-import android.util.Log
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import timber.log.Timber
+import java.util.concurrent.TimeUnit
 import java.util.logging.Logger
+
 
 class PostApi(private val context: Context) {
 
@@ -14,10 +15,16 @@ class PostApi(private val context: Context) {
 
     fun getPostApiService() : PostApiService {
 
+        val okHttpClient = OkHttpClient.Builder()
+            .readTimeout(60, TimeUnit.SECONDS)
+            .connectTimeout(60, TimeUnit.SECONDS)
+            .build()
+
         val retrofit= Retrofit.Builder()
             .baseUrl(SERVERR_URL)
             .addConverterFactory(MoshiConverterFactory.create())
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
+            .client(okHttpClient)
             .build()
 
         Logger.getAnonymousLogger().info("getPostApiService")
