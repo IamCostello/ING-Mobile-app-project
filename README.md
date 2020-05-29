@@ -35,6 +35,7 @@ Project created in cooperation with ING by the team:\
 <a name="test"></a>
 ### Tested with
 - <a href="https://junit.org/junit4/" title="junit">JUnit4</a>
+- Espresso
 
 <a name="icon"></a>
 ### Icon sources
