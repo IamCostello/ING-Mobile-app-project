@@ -3,6 +3,7 @@ package com.example.kotlinpostapi.firebase
 import android.util.Log
 import android.widget.Toast
 import androidx.navigation.Navigation
+import com.example.kotlinpostapi.views.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
@@ -12,9 +13,7 @@ class FirebaseHelper {
 
     companion object {
 
-        internal var state: Boolean = false
         private var auth: FirebaseAuth? = null
-
 
 
         fun getInstance(): FirebaseAuth? {
@@ -30,31 +29,7 @@ class FirebaseHelper {
 
         }
 
-        fun login(email:String, password: String){
-            getInstance()?.signInWithEmailAndPassword(email,password)?.addOnCompleteListener{
-                if(it.isSuccessful){
-                    return@addOnCompleteListener
-                }
-            }
 
-        }
-
-        fun register(email:String,password: String){
-            getInstance()?.createUserWithEmailAndPassword(email, password)
-                ?.addOnCompleteListener {
-                    if (it.isSuccessful) {
-                        Log.d("tag", "createUserWithEmail:success")
-
-                    } else{
-                        Log.w("FAIL", "createUserWithEmail:failure", it.exception)
-
-
-                    }
-
-
-                }
-
-            }
         fun signOut(){
             getInstance()?.signOut()
         }

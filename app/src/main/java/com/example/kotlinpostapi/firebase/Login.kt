@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.kotlinpostapi.Navigation
@@ -56,10 +57,19 @@ class Login : Fragment(), Navigation.OnLogInClickListener,
     override fun onLogInClick() {
 
         if (validateForm()) {
-            Log.d("asa","i tak dziala nobek +" + validateForm())
-            FirebaseHelper.login(email, password)
+            FirebaseHelper.getInstance()?.signInWithEmailAndPassword(email,password)?.addOnCompleteListener{
+                if(it.isSuccessful){
+                    findNavController().navigate(LoginDirections.actionAuthLoginToPostList())
+                    return@addOnCompleteListener
 
-                findNavController().navigate(LoginDirections.actionAuthLoginToPostList())
+                }
+                else{
+                    Toast.makeText(activity,"Incorrect data", Toast.LENGTH_LONG).show()
+
+                }
+            }
+
+
 
 
         }

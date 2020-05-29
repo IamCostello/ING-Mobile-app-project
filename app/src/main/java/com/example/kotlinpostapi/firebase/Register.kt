@@ -48,11 +48,25 @@ class Register : Fragment(), Navigation.OnExistingUserClickListener,
 
         if (validateForm()) {
             //
-            FirebaseHelper.register(email,password)
-            //findNavController().navigate(RegisterDirections.actionAuthLoginToPostList())
+            FirebaseHelper.getInstance()?.createUserWithEmailAndPassword(email, password)
+                ?.addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        findNavController().navigate(RegisterDirections.actionAuthLoginToPostList())
+                        Log.d("tag", "createUserWithEmail:success")
 
+                    } else{
+                        Toast.makeText(activity,"User already exist",Toast.LENGTH_LONG).show()
+                        Log.w("FAIL", "createUserWithEmail:failure", it.exception)
+
+
+                    }
+
+
+                }
 
         }
+
+
 
 
     }
