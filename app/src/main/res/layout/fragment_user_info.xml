@@ -84,7 +84,7 @@
                                 android:layout_gravity="center_horizontal"
                                 android:layout_marginTop="20dp"
                                 android:fontFamily="sans-serif-light"
-                                android:text="CITY"
+                                android:text="@{user.address.city}"
                                 android:textSize="20sp" />
 
                             <View
