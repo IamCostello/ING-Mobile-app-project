@@ -44,11 +44,6 @@ class UserInfoTest{
     @Test
     fun testUserIsDisplaying(){
 
-        onView(withId(R.id.loginEmail)).perform(click()).perform(typeText("example@example.com"))
-        onView(withId(R.id.loginUserPassword)).perform(click()).perform(typeText("example"))
-        pressBack()
-        onView(withId(R.id.loginButton)).perform(click())
-
         onView(withId(R.id.posts_view)).perform(actionOnItemAtPosition<PostAdapter.PostsViewHolder>(2, Helpers.clickChildView(R.id.username)))
 
         onView(withId(R.id.name_text)).check(matches(isDisplayed()))
