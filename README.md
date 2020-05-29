@@ -54,9 +54,9 @@ Icons made by:
 </p>
 <p float="left">
   <img src="https://user-images.githubusercontent.com/51888438/83238978-7a2b1980-a197-11ea-8e06-411c9739ad5b.jpg" alt="screen-icon" width="212px"/>
-  <img src="https://user-images.githubusercontent.com/51888438/83308578-5acbd500-a207-11ea-8ff3-f10a985722b9.jpg" alt="user-screen" width="212px"/>
  <img src="https://user-images.githubusercontent.com/51888438/83308575-5a333e80-a207-11ea-83d1-cf0ad2db39ae.jpg" alt="home-screen" width="212px"/>
  <img src="https://user-images.githubusercontent.com/51888438/83309462-9ff10680-a209-11ea-9c57-6b6f6cc9bdd4.jpg" alt="error-screen" width="212px"/>
+   <img src="https://user-images.githubusercontent.com/51888438/83308578-5acbd500-a207-11ea-8ff3-f10a985722b9.jpg" alt="user-screen" width="212px"/>
 </p>
 
 <a name="tasks"></a>
