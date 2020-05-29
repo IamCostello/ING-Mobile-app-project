@@ -28,6 +28,7 @@ class UserInfo : Fragment(), Navigation.OnAlbumClickListener, Navigation.OnMapCl
     ): View? {
         binding = FragmentUserInfoBinding.inflate(inflater, container, false)
 
+
         observeLiveData()
         getUserData(args.userId)
 
