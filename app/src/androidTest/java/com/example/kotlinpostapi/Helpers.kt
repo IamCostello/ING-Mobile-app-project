@@ -10,7 +10,7 @@ import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.platform.app.InstrumentationRegistry
 import org.hamcrest.Matcher
 
-class MyMatchers{
+class Helpers{
     companion object{
         fun clickChildView(id: Int) : ViewAction {
             return object: ViewAction {

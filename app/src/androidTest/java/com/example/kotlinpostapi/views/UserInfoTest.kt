@@ -8,7 +8,7 @@ import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.example.kotlinpostapi.MyMatchers
+import com.example.kotlinpostapi.Helpers
 import com.example.kotlinpostapi.R
 import com.example.kotlinpostapi.posts.PostAdapter
 import com.example.kotlinpostapi.util.EspressoIdlingResource
@@ -38,13 +38,13 @@ class UserInfoTest{
 
     @Test
     fun testUserIsDisplaying(){
-        onView(withId(R.id.posts_view)).perform(actionOnItemAtPosition<PostAdapter.PostsViewHolder>(2, MyMatchers.clickChildView(R.id.username)))
+        onView(withId(R.id.posts_view)).perform(actionOnItemAtPosition<PostAdapter.PostsViewHolder>(2, Helpers.clickChildView(R.id.username)))
 
-        onView(withId(R.id.userEmail)).check(matches(isDisplayed()))
-        onView(withId(R.id.userCity)).check(matches(isDisplayed()))
-        onView(withId(R.id.userCompany)).check(matches(isDisplayed()))
-        onView(withId(R.id.userPhone)).check(matches(isDisplayed()))
-        onView(withId(R.id.userWebsite)).check(matches(isDisplayed()))
+        onView(withId(R.id.name_text)).check(matches(isDisplayed()))
+        onView(withId(R.id.email_text)).check(matches(isDisplayed()))
+        onView(withId(R.id.company_text)).check(matches(isDisplayed()))
+        onView(withId(R.id.phone_text)).check(matches(isDisplayed()))
+        onView(withId(R.id.web_text)).check(matches(isDisplayed()))
     }
 
 }

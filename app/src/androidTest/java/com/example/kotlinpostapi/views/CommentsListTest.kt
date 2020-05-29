@@ -1,6 +1,7 @@
 package com.example.kotlinpostapi.views
 
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.Espresso.pressBack
 import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
@@ -8,7 +9,7 @@ import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.example.kotlinpostapi.MyMatchers
+import com.example.kotlinpostapi.Helpers
 import com.example.kotlinpostapi.R
 import com.example.kotlinpostapi.posts.PostAdapter
 import com.example.kotlinpostapi.util.EspressoIdlingResource
@@ -18,6 +19,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import kotlin.random.Random
 
 @RunWith(AndroidJUnit4::class)
 class CommentsListTest{
@@ -36,10 +38,15 @@ class CommentsListTest{
     }
     @Test
     fun testCommentsAreDisplayed() {
-        onView(withId(R.id.posts_view)).perform(actionOnItemAtPosition<PostAdapter.PostsViewHolder>(1, MyMatchers.clickChildView(R.id.show_comments_button)))
+        for (i in listOf(1,15,23,37,45,53,67,72,89,91)){
 
-        onView(withId(R.id.comments_view)).check(matches(isDisplayed()))
+            onView(withId(R.id.posts_view)).perform(actionOnItemAtPosition<PostAdapter.PostsViewHolder>(1, Helpers.clickChildView(R.id.show_comments_button)))
 
-        onView(withId(R.id.comments_view)).check(MyMatchers.countItems(greaterThan(1)))
+            onView(withId(R.id.comments_view)).check(matches(isDisplayed()))
+
+            onView(withId(R.id.comments_view)).check(Helpers.countItems(greaterThan(1)))
+
+            pressBack()
+        }
     }
 }
