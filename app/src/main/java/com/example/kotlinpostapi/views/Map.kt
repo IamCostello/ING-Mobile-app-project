@@ -28,12 +28,14 @@ class Map : SupportMapFragment(), OnMapReadyCallback {
         super.onCreateView(inflater, container, savedInstanceState)
 
         binding = FragmentMapBinding.inflate(inflater, container, false)
+        binding.city = args.city
+        binding.address = args.street
+        binding.suite = args.suite
         binding.mapView.onCreate(savedInstanceState)
         binding.mapView.getMapAsync(this)
 
         return binding.root
     }
-
 
     override fun onResume() {
         super.onResume()

@@ -42,10 +42,14 @@
         android:label="PostList" >
         <action
             android:id="@+id/action_postList_to_userInfo"
-            app:destination="@id/userInfo" />
+            app:destination="@id/userInfo"
+            app:enterAnim="@anim/slide_up_v2"
+            app:popExitAnim="@anim/slide_down_v2" />
         <action
             android:id="@+id/action_postList_to_commentsList"
-            app:destination="@id/commentsList" />
+            app:destination="@id/commentsList"
+            app:enterAnim="@anim/slide_up"
+            app:popExitAnim="@anim/slide_down" />
     </fragment>
     <fragment
         android:id="@+id/userInfo"
@@ -58,10 +62,14 @@
 
         <action
             android:id="@+id/action_userInfo_to_albumList"
-            app:destination="@id/albumsList"/>
+            app:destination="@id/albumsList"
+            app:enterAnim="@anim/right_in"
+            app:popExitAnim="@anim/right_out" />
         <action
             android:id="@+id/action_userInfo_to_map"
-            app:destination="@id/map" />
+            app:destination="@id/map"
+            app:enterAnim="@anim/right_in"
+            app:popExitAnim="@anim/left_out" />
     </fragment>
     <fragment
         android:id="@+id/commentsList"
@@ -80,7 +88,9 @@
             app:argType="integer"/>
         <action
             android:id="@+id/action_albumsList_to_photoList"
-            app:destination="@id/photoList" />
+            app:destination="@id/photoList"
+            app:enterAnim="@anim/right_in"
+            app:popExitAnim="@anim/right_out" />
     </fragment>
 
     <fragment
@@ -102,6 +112,13 @@
             app:argType="string" />
         <argument
             android:name="userLng"
+            app:argType="string" />
+        <argument
+            android:name="street"
+            app:argType="string" />
+        <argument android:name="city"
+            app:argType="string" />
+        <argument android:name="suite"
             app:argType="string" />
     </fragment>
 

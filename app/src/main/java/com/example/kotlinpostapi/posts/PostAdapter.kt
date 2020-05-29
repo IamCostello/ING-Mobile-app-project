@@ -20,7 +20,7 @@ class PostAdapter(
 
     private var networkState: NetworkState? = null
 
-    inner class PostsViewHolder(binding: PostViewBinding, OnUserClickListener: OnUserClickListener, OnPostClickListener: OnPostClickListener) : RecyclerView.ViewHolder(binding.root) {
+    inner class PostsViewHolder(binding: PostViewBinding) : RecyclerView.ViewHolder(binding.root) {
         private val binding: PostViewBinding = binding
 
         fun bind(post: Post){
@@ -34,7 +34,7 @@ class PostAdapter(
         val binding = PostViewBinding.inflate(layoutInflater)
 
 
-        return PostsViewHolder(binding, onUserClickListener, onPostClickListener)
+        return PostsViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: PostsViewHolder, position: Int) {
@@ -43,6 +43,7 @@ class PostAdapter(
             holder.bind(post)
             holder.itemView.username.setOnClickListener { onUserClickListener.onUserClick(post.userId) }
             holder.itemView.show_comments_button.setOnClickListener { onPostClickListener.onPostClick(post) }
+            holder.itemView.comment_icon.setOnClickListener { onPostClickListener.onPostClick(post) }
         }
     }
 }

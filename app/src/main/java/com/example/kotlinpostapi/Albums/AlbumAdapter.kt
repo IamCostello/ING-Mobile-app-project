@@ -18,7 +18,8 @@ class AlbumAdapter(private var albums: List<Album>, var onPhotoClickListener: Na
         private val onAlbumClickListener  = OnPhotoClickListener
 
         init {
-            itemView.show_photos_button.setOnClickListener{onAlbumClickListener.onPhotoClick(albums[adapterPosition].id)}
+            itemView.album_view_icon.setOnClickListener{onAlbumClickListener.onPhotoClick(albums[adapterPosition].id)}
+            itemView.album_title.setOnClickListener { onAlbumClickListener.onPhotoClick(albums[adapterPosition].id) }
         }
 
 

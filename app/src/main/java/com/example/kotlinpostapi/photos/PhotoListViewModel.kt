@@ -7,6 +7,7 @@ import com.example.kotlinpostapi.apiObjects.Album
 import com.example.kotlinpostapi.apiObjects.Photo
 import com.example.kotlinpostapi.repository.AlbumRepository
 import com.example.kotlinpostapi.repository.PhotoRepository
+import com.example.kotlinpostapi.util.EspressoIdlingResource
 import kotlinx.coroutines.launch
 import com.example.kotlinpostapi.util.Result
 import com.example.kotlinpostapi.util.ResultType
@@ -19,20 +20,24 @@ class PhotoListViewModel (private val photosRepository: PhotoRepository, private
     val isErrorLiveData: MutableLiveData<Boolean> = MutableLiveData()
 
     fun getPhotos(album: Album){
+        EspressoIdlingResource.increment()
         viewModelScope.launch {
             val apiResult = photosRepository.getPhotos()
             val uiResult = Result(apiResult.resultType,apiResult.data?.filter { it.albumId == album.id })
             updatePhotosLiveData(uiResult)
+            EspressoIdlingResource.decrement()
         }
     }
 
     //??
 
     fun getAlbum(albumId: Int){
+        EspressoIdlingResource.increment()
         viewModelScope.launch {
             val apiResult = albumRepository.getAlbums()
             val uiResult = Result(apiResult.resultType, apiResult.data?.filter { it.id == albumId }?.first())
             updateAlbumsLiveData(uiResult)
+            EspressoIdlingResource.decrement()
         }
     }
 

@@ -13,7 +13,7 @@ import com.example.kotlinpostapi.databinding.FragmentUserInfoBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import androidx.navigation.fragment.findNavController
 import com.example.kotlinpostapi.Navigation
-import com.example.kotlinpostapi.apiObjects.Geo
+
 
 class UserInfo : Fragment(), Navigation.OnAlbumClickListener, Navigation.OnMapClickListener {
     private val userViewModel: UserViewModel by viewModel()
@@ -31,9 +31,13 @@ class UserInfo : Fragment(), Navigation.OnAlbumClickListener, Navigation.OnMapCl
         observeLiveData()
         getUserData(args.userId)
 
-        binding.showAlbumsButton.setOnClickListener(View.OnClickListener { onAlbumClick(args.userId) })
-        binding.showMapButton.setOnClickListener(View.OnClickListener { onMapClick(userData.address?.geo?.lat,
-            userData.address?.geo?.lng
+        binding.albumIcon.setOnClickListener(View.OnClickListener { onAlbumClick(args.userId) })
+        binding.mapIcon.setOnClickListener(View.OnClickListener { onMapClick(
+            userData.address?.geo?.lat,
+            userData.address?.geo?.lng,
+            userData.address?.street,
+            userData.address?.city,
+            userData.address?.suite
         ) })
 
 
@@ -46,11 +50,11 @@ class UserInfo : Fragment(), Navigation.OnAlbumClickListener, Navigation.OnMapCl
     }
 
     private fun onReceivedError() {
-        android.app.AlertDialog.Builder(activity).setTitle("Błąd").setCancelable(false)
-            .setNegativeButton("Anuluj") { _,
+        android.app.AlertDialog.Builder(activity, 5).setTitle("Network error").setCancelable(false)
+            .setNegativeButton("Exit") { _,
                                            _ ->
                 activity?.finish()
-            }.setPositiveButton("Spróbuj ponownie") { _, _ -> getUserData(args.userId) }.show()
+            }.setPositiveButton("Retry") { _, _ -> getUserData(args.userId) }.show()
     }
 
     private fun onUserDataReceived(userData: User) {
@@ -71,12 +75,15 @@ class UserInfo : Fragment(), Navigation.OnAlbumClickListener, Navigation.OnMapCl
     }
 
 
-    override fun onMapClick(userLat: String?, userLng: String?) {
-        val action = userLat?.let { UserInfoDirections.actionUserInfoToMap(it, userLng!!) }
-
-        if(action != null){
-            findNavController().navigate(action)
-        }
+    override fun onMapClick(
+        userLat: String?,
+        userLng: String?,
+        street: String?,
+        city: String?,
+        suite: String?
+    ) {
+        val action = UserInfoDirections.actionUserInfoToMap(userLat ?: "" , userLng ?: "", street?: "", city?: "", suite?: "")
+        findNavController().navigate(action)
     }
 }
 

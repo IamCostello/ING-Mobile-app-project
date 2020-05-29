@@ -7,6 +7,7 @@ import com.example.kotlinpostapi.apiObjects.Comment
 import com.example.kotlinpostapi.apiObjects.Post
 import com.example.kotlinpostapi.repository.CommentsRepository
 import com.example.kotlinpostapi.repository.PostRepository
+import com.example.kotlinpostapi.util.EspressoIdlingResource
 import com.example.kotlinpostapi.util.ResultType
 import com.example.kotlinpostapi.util.Result
 import kotlinx.coroutines.launch
@@ -19,18 +20,22 @@ class CommentsListViewModel(private val commentsRepository: CommentsRepository, 
     val isErrorLiveData: MutableLiveData<Boolean> = MutableLiveData()
 
     fun getComments(post: Post){
+        EspressoIdlingResource.increment()
         viewModelScope.launch{
             val apiResult = commentsRepository.getComments()
             val uiResult = Result(apiResult.resultType, apiResult.data?.filter{it.postId == post.id})
             updateCommentsLiveData(uiResult)
+            EspressoIdlingResource.decrement()
         }
     }
 
     fun getPost(postId: Int){
+        EspressoIdlingResource.increment()
         viewModelScope.launch{
             val apiResult = postRepository.getPosts()
             val uiResult = Result(apiResult.resultType, apiResult.data?.filter{it.id == postId}?.first())
             updatePostLiveData(uiResult)
+            EspressoIdlingResource.decrement()
         }
     }
 
