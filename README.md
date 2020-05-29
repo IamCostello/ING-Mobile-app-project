@@ -18,6 +18,12 @@ Aplikacja tworzona w ramach współpracy z ING przez zespół w składzie:
   - Lifecycle aware error dialog fragment
   - More main screen interaction
   - Design changes
+# App preview:
+<p float="left">
+ <img src="https://user-images.githubusercontent.com/51888438/83247335-ad73a580-a1a3-11ea-9232-dcf581168cb8.gif" alt="gif"
+      width="212px"/>
+ </p>
+
 
 <p float="left">
   <img src="https://user-images.githubusercontent.com/51888438/83238978-7a2b1980-a197-11ea-8e06-411c9739ad5b.jpg" alt="screen-icon" width="212px"/>
