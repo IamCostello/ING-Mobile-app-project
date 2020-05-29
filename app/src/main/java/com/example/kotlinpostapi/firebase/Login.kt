@@ -35,8 +35,9 @@ class Login : Fragment(), Navigation.OnLogInClickListener,
 
     override fun onStart() {
         super.onStart()
-
-        //findNavController().navigate(LoginDirections.actionAuthLoginToPostList())
+        if(FirebaseHelper.getCurrentUser() != null) {
+            findNavController().navigate(LoginDirections.actionAuthLoginToPostList())
+        }
 
     }
 

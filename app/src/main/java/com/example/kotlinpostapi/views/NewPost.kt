@@ -1,7 +1,6 @@
 package com.example.kotlinpostapi.views
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +10,6 @@ import com.example.kotlinpostapi.apiObjects.Post
 import com.example.kotlinpostapi.databinding.FragmentAddPostBinding
 import com.example.kotlinpostapi.firebase.FirebaseHelper
 import com.example.kotlinpostapi.repository.PostRepository
-import com.google.firebase.ktx.Firebase
 import org.koin.android.ext.android.inject
 
 
@@ -41,11 +39,10 @@ class NewPost:  Fragment(), Navigation.OnAddPostClickListener {
         postRepository.createPost(Post(null,null,null,title,description,getNameFromEmail(),0))
 
 
-        Log.d("EMAIL TO",getNameFromEmail())
+
     }
 
     fun getNameFromEmail():String{
-        Log.d("EMAIL TO", FirebaseHelper.getCurrentUser()?.email.toString())
         val x = FirebaseHelper.getCurrentUser()?.email.toString().indexOf("@")
         if(x > 0) {
             return FirebaseHelper.getCurrentUser()?.email.toString().substring(0, x)
