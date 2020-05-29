@@ -16,6 +16,7 @@ import com.example.kotlinpostapi.util.EspressoIdlingResource
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.activity_main.*
 import timber.log.Timber
 
 
@@ -30,9 +31,12 @@ class Login : Fragment(), Navigation.OnLogInClickListener,
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        bottomNavigationView?.visibility = View.GONE
+
         if(FirebaseHelper.getCurrentUser() != null){
             findNavController().navigate(LoginDirections.actionAuthLoginToPostList())
         }
+
     }
 
 
@@ -45,6 +49,7 @@ class Login : Fragment(), Navigation.OnLogInClickListener,
         binding = FragmentLoginBinding.inflate(inflater, container, false)
         binding.loginButton.setOnClickListener(View.OnClickListener { onLogInClick() })
         binding.noAccountTextView.setOnClickListener(View.OnClickListener { onMoveToRegisterClick() })
+
 
 
         return binding.root

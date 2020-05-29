@@ -24,7 +24,9 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setupWithNavController(navhost.findNavController())
         navhost.findNavController().addOnDestinationChangedListener { controller, destination, arguments ->
             when(destination.id) {
-                R.id.action_authLogin_to_authRegister -> bottomNavigationView.visibility = View.GONE
+                R.id.authLogin -> bottomNavigationView.visibility = View.GONE
+                R.id.authRegister -> bottomNavigationView.visibility = View.GONE
+                else -> bottomNavigationView.visibility = View.VISIBLE
             }
         }
     }
