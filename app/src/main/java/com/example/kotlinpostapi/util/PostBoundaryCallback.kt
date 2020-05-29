@@ -54,7 +54,14 @@ class PostBoundaryCallback (
             }
 
             override fun onResponse(call: Call<List<Post>>, response: Response<List<Post>>) {
-                insertIntoDb(response, it)
+                CoroutineScope(Dispatchers.IO).launch {
+                    val userList = postRepository.getUserNamesList()
+                    val posts = postRepository.getPosts()
+                    val commentCount = postRepository.getCommentCount(posts.data)
+                    response.body()?.map { it.username = userList[it.userId!!-1] }
+                    response.body()?.map { it.commentsCount = commentCount[it.id!!-1] }
+                    insertIntoDb(response, it)
+                }
             }
         }
     }

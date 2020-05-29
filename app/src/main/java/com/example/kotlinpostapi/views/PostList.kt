@@ -12,14 +12,16 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.kotlinpostapi.Navigation
-import com.example.kotlinpostapi.Posts.PostAdapter
 import com.example.kotlinpostapi.posts.PostViewModel
 import com.example.kotlinpostapi.apiObjects.Post
 import com.example.kotlinpostapi.databinding.FragmentPostListBinding
+import com.example.kotlinpostapi.posts.PostAdapter
+import com.example.kotlinpostapi.repository.PostRepository
 import com.example.kotlinpostapi.util.NetworkState
 import com.example.kotlinpostapi.util.PostListDecorator
 import kotlinx.android.synthetic.main.fragment_post_list.*
 import kotlinx.android.synthetic.main.fragment_post_list.view.*
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PostList() : Fragment(), Navigation.OnUserClickListener, Navigation.OnPostClickListener{
@@ -75,11 +77,15 @@ class PostList() : Fragment(), Navigation.OnUserClickListener, Navigation.OnPost
     private fun onNetworkStateChange(state: NetworkState) {
         when(state) {
             NetworkState.error("Failed loading data") -> {
-                android.app.AlertDialog.Builder(activity).setTitle("Błąd").setCancelable(false)
-                    .setNegativeButton("Anuluj") { _,
+                android.app.AlertDialog.Builder(activity, 5)
+                    .setTitle("Network error")
+                    .setMessage("Something went wrong loading data")
+                    .setCancelable(false)
+                    .setNegativeButton("Retry") { _,
                                                    _ ->
-                        activity?.finish()
-                    }.setPositiveButton("Spróbuj ponownie") { _, _ -> viewModel.retry() }.show()
+                        viewModel.retry()
+                    }.setPositiveButton("Ok") { _, _ ->  }
+                    .show()
             }
         }
     }

@@ -1,4 +1,4 @@
-package com.example.kotlinpostapi.Posts
+package com.example.kotlinpostapi.posts
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

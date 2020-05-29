@@ -32,7 +32,13 @@ class UserInfo : Fragment(), Navigation.OnAlbumClickListener, Navigation.OnMapCl
         getUserData(args.userId)
 
         binding.albumIcon.setOnClickListener(View.OnClickListener { onAlbumClick(args.userId) })
-        binding.mapIcon.setOnClickListener(View.OnClickListener { onMapClick(userData.address?.geo?.lat, userData.address?.geo?.lng) })
+        binding.mapIcon.setOnClickListener(View.OnClickListener { onMapClick(
+            userData.address?.geo?.lat,
+            userData.address?.geo?.lng,
+            userData.address?.street,
+            userData.address?.city,
+            userData.address?.suite
+        ) })
 
 
         return binding.root
@@ -44,11 +50,11 @@ class UserInfo : Fragment(), Navigation.OnAlbumClickListener, Navigation.OnMapCl
     }
 
     private fun onReceivedError() {
-        android.app.AlertDialog.Builder(activity).setTitle("Błąd").setCancelable(false)
-            .setNegativeButton("Anuluj") { _,
+        android.app.AlertDialog.Builder(activity, 5).setTitle("Network error").setCancelable(false)
+            .setNegativeButton("Exit") { _,
                                            _ ->
                 activity?.finish()
-            }.setPositiveButton("Spróbuj ponownie") { _, _ -> getUserData(args.userId) }.show()
+            }.setPositiveButton("Retry") { _, _ -> getUserData(args.userId) }.show()
     }
 
     private fun onUserDataReceived(userData: User) {
@@ -69,12 +75,15 @@ class UserInfo : Fragment(), Navigation.OnAlbumClickListener, Navigation.OnMapCl
     }
 
 
-    override fun onMapClick(userLat: String?, userLng: String?) {
-        val action = userLat?.let { UserInfoDirections.actionUserInfoToMap(it, userLng!!) }
-
-        if(action != null){
-            findNavController().navigate(action)
-        }
+    override fun onMapClick(
+        userLat: String?,
+        userLng: String?,
+        street: String?,
+        city: String?,
+        suite: String?
+    ) {
+        val action = UserInfoDirections.actionUserInfoToMap(userLat ?: "" , userLng ?: "", street?: "", city?: "", suite?: "")
+        findNavController().navigate(action)
     }
 }
 

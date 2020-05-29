@@ -82,6 +82,13 @@
         <argument
             android:name="userLng"
             app:argType="string" />
+        <argument
+            android:name="street"
+            app:argType="string" />
+        <argument android:name="city"
+            app:argType="string" />
+        <argument android:name="suite"
+            app:argType="string" />
     </fragment>
 
 
