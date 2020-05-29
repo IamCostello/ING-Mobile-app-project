@@ -18,11 +18,11 @@
 
 <a name="about"></a>
 # ING Mobile app project
-Project created in cooperation with ING by the team:
- - Dariusz Gansty [👤](https://github.com/daroG)
- - Krzysztof Dąbrowski [👤](https://github.com/IamCostello)
- - Anna Domańska [👤](https://github.com/tdxa)
- - Patryk Dragon [👤](https://github.com/Orgooonek)
+Project created in cooperation with ING by the team:\
+ [👤](https://github.com/daroG) Dariusz Gansty \
+ [👤](https://github.com/IamCostello) Krzysztof Dąbrowski \
+ [👤](https://github.com/tdxa) Anna Domańska \
+ [👤](https://github.com/Orgooonek) Patryk Dragon \
 <a name="built"></a>
 ### Built with
 - <a href="https://gradle.org" title="gradle">Gradle</a>
