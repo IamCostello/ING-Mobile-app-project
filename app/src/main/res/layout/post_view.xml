@@ -5,7 +5,6 @@
             name="post"
             type="com.example.kotlinpostapi.apiObjects.Post" />
     </data>
-
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -19,28 +18,47 @@
             android:layout_height="wrap_content"
             android:id="@+id/username"
             android:textSize="24sp"
-            android:textColor="@color/colorGreen"
-            android:text="@{`[UserID] ` + post.userId + ` [PostID] ` + post.id}"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="@{post.username}"
             android:layout_marginBottom="2.5dp"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:textSize="18sp"
-            android:textColor="@color/colorTeal"
+            android:textColor="@color/colorText"
             android:layout_marginBottom="2dp"
             android:text="@{post.title}" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:textSize="12sp"
-            android:textColor="@color/colorGrey"
+            android:textColor="@color/colorSecondaryText"
             android:layout_marginBottom="4dp"
             android:text="@{post.body}" />
-        <TextView
-            android:layout_width="match_parent"
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{`show comments`}"
-            android:id="@+id/show_comments_button"/>
+            android:layout_marginTop="7dp">
+
+            <ImageView
+                android:id="@+id/comment_icon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/comment"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:textColor="@color/colorPrimaryText"
+                android:text="@{post.commentsCount + ` show comments`}"
+                android:id="@+id/show_comments_button"/>
+        </RelativeLayout>
+
+
 
     </LinearLayout>
 </layout>

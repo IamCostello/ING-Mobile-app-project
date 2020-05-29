@@ -13,7 +13,7 @@ import com.example.kotlinpostapi.databinding.FragmentUserInfoBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import androidx.navigation.fragment.findNavController
 import com.example.kotlinpostapi.Navigation
-import com.example.kotlinpostapi.apiObjects.Geo
+
 
 class UserInfo : Fragment(), Navigation.OnAlbumClickListener, Navigation.OnMapClickListener {
     private val userViewModel: UserViewModel by viewModel()
@@ -31,10 +31,8 @@ class UserInfo : Fragment(), Navigation.OnAlbumClickListener, Navigation.OnMapCl
         observeLiveData()
         getUserData(args.userId)
 
-        binding.showAlbumsButton.setOnClickListener(View.OnClickListener { onAlbumClick(args.userId) })
-        binding.showMapButton.setOnClickListener(View.OnClickListener { onMapClick(userData.address?.geo?.lat,
-            userData.address?.geo?.lng
-        ) })
+        binding.albumIcon.setOnClickListener(View.OnClickListener { onAlbumClick(args.userId) })
+        binding.mapIcon.setOnClickListener(View.OnClickListener { onMapClick(userData.address?.geo?.lat, userData.address?.geo?.lng) })
 
 
         return binding.root

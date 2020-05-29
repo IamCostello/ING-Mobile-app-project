@@ -1,8 +1,7 @@
-package com.example.kotlinpostapi.posts
+package com.example.kotlinpostapi.Posts
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinpostapi.Navigation.OnPostClickListener
 import com.example.kotlinpostapi.Navigation.OnUserClickListener
@@ -14,6 +13,7 @@ import kotlinx.android.synthetic.main.post_view.view.*
 
 
 class PostAdapter(
+    private var posts: List<Post>,
     var onUserClickListener: OnUserClickListener,
     var onPostClickListener: OnPostClickListener
 ) : PagedListAdapter<Post, PostAdapter.PostsViewHolder>(PostDiffUtil) {
@@ -43,6 +43,7 @@ class PostAdapter(
             holder.bind(post)
             holder.itemView.username.setOnClickListener { onUserClickListener.onUserClick(post.userId) }
             holder.itemView.show_comments_button.setOnClickListener { onPostClickListener.onPostClick(post) }
+            holder.itemView.comment_icon.setOnClickListener { onPostClickListener.onPostClick(post) }
         }
     }
 }
