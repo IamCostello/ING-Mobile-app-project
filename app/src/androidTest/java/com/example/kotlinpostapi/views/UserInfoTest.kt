@@ -1,7 +1,12 @@
 package com.example.kotlinpostapi.views
 
+import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.Espresso.pressBack
 import androidx.test.espresso.IdlingRegistry
+import androidx.test.espresso.action.ViewActions
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
@@ -38,6 +43,12 @@ class UserInfoTest{
 
     @Test
     fun testUserIsDisplaying(){
+
+        onView(withId(R.id.loginEmail)).perform(click()).perform(typeText("example@example.com"))
+        onView(withId(R.id.loginUserPassword)).perform(click()).perform(typeText("example"))
+        pressBack()
+        onView(withId(R.id.loginButton)).perform(click())
+
         onView(withId(R.id.posts_view)).perform(actionOnItemAtPosition<PostAdapter.PostsViewHolder>(2, Helpers.clickChildView(R.id.username)))
 
         onView(withId(R.id.name_text)).check(matches(isDisplayed()))
