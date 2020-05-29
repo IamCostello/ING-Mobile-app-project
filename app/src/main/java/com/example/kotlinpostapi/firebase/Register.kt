@@ -2,7 +2,6 @@ package com.example.kotlinpostapi.firebase
 
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,9 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.kotlinpostapi.Navigation
 import com.example.kotlinpostapi.databinding.FragmentRegisterBinding
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
+
 
 class Register : Fragment(), Navigation.OnExistingUserClickListener,
     Navigation.OnRegisterClickListener {
@@ -52,11 +49,11 @@ class Register : Fragment(), Navigation.OnExistingUserClickListener,
                 ?.addOnCompleteListener {
                     if (it.isSuccessful) {
                         findNavController().navigate(RegisterDirections.actionAuthLoginToPostList())
-                        Log.d("tag", "createUserWithEmail:success")
+
 
                     } else{
                         Toast.makeText(activity,"User already exist",Toast.LENGTH_LONG).show()
-                        Log.w("FAIL", "createUserWithEmail:failure", it.exception)
+
 
 
                     }
