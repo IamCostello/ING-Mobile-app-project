@@ -41,10 +41,7 @@ class AlbumListTest{
 
     @Test
     fun testIsDisplayingAlbumList(){
-        onView(withId(R.id.loginEmail)).perform(click()).perform(ViewActions.typeText("example@example.com"))
-        onView(withId(R.id.loginUserPassword)).perform(click()).perform(ViewActions.typeText("example"))
-        pressBack()
-        onView(withId(R.id.loginButton)).perform(click())
+
         onView(withId(R.id.posts_view)).perform(actionOnItemAtPosition<PostAdapter.PostsViewHolder>(4, Helpers.clickChildView(R.id.username)))
 
         onView(withId(R.id.album_icon)).perform(click())
@@ -54,10 +51,7 @@ class AlbumListTest{
 
     @Test
     fun testAreListsNotEmpty() {
-        onView(withId(R.id.loginEmail)).perform(click()).perform(ViewActions.typeText("example@example.com"))
-        onView(withId(R.id.loginUserPassword)).perform(click()).perform(ViewActions.typeText("example"))
-        pressBack()
-        onView(withId(R.id.loginButton)).perform(click())
+
 
         for (i in listOf(1,11,21,31,41,51)){
 

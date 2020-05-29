@@ -1,5 +1,7 @@
 package com.example.kotlinpostapi.views
 
+
+
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.Espresso.pressBack
 import androidx.test.espresso.IdlingRegistry
@@ -24,7 +26,7 @@ import org.junit.runner.RunWith
 import kotlin.random.Random
 
 @RunWith(AndroidJUnit4::class)
-class CommentsListTest{
+class LoginTest {
 
     @get: Rule
     val activityScenario = ActivityScenarioRule(MainActivity::class.java)
@@ -39,19 +41,15 @@ class CommentsListTest{
         IdlingRegistry.getInstance().unregister(EspressoIdlingResource.countingIdlingResource)
     }
     @Test
-    fun testCommentsAreDisplayed() {
+    fun testLoginDisplayed() {
+
+        onView(withId(R.id.loginEmail)).perform(click()).perform(typeText("example@example.com"))
+        onView(withId(R.id.loginUserPassword)).perform(click()).perform(typeText("example"))
+        pressBack()
+        onView(withId(R.id.loginButton)).perform(click())
 
 
+        onView(withId(R.id.posts_view)).check(matches(isDisplayed()))
 
-        for (i in listOf(1,15,23,37,45,53,67,72,89,91)){
-
-            onView(withId(R.id.posts_view)).perform(actionOnItemAtPosition<PostAdapter.PostsViewHolder>(1, Helpers.clickChildView(R.id.show_comments_button)))
-
-            onView(withId(R.id.comments_view)).check(matches(isDisplayed()))
-
-            onView(withId(R.id.comments_view)).check(Helpers.countItems(greaterThan(1)))
-
-            pressBack()
-        }
     }
 }

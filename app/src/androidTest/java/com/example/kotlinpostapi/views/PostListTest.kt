@@ -39,29 +39,17 @@ class PostListTest{
 
     @Test
     fun isLoadingPostListAsFirstFragment() {
-        onView(withId(R.id.loginEmail)).perform(click()).perform(ViewActions.typeText("example@example.com"))
-        onView(withId(R.id.loginUserPassword)).perform(click()).perform(ViewActions.typeText("example"))
-        pressBack()
-        onView(withId(R.id.loginButton)).perform(click())
         onView(withId(R.id.posts_view)).check(matches(isDisplayed()))
     }
 
     @Test
     fun isPostListNotEmpty() {
-        onView(withId(R.id.loginEmail)).perform(click()).perform(ViewActions.typeText("example@example.com"))
-        onView(withId(R.id.loginUserPassword)).perform(click()).perform(ViewActions.typeText("example"))
-        pressBack()
-        onView(withId(R.id.loginButton)).perform(click())
         onView(withId(R.id.posts_view)).check(Helpers.countItems(greaterThan(1)))
 
     }
 
     @Test
     fun testNavigationToUserDetails(){
-        onView(withId(R.id.loginEmail)).perform(click()).perform(ViewActions.typeText("example@example.com"))
-        onView(withId(R.id.loginUserPassword)).perform(click()).perform(ViewActions.typeText("example"))
-        pressBack()
-        onView(withId(R.id.loginButton)).perform(click())
         onView(withId(R.id.posts_view)).perform(actionOnItemAtPosition<PostAdapter.PostsViewHolder>(3, Helpers.clickChildView(R.id.username)))
 
         onView(withId(R.id.album_icon)).check(matches(isDisplayed()))
@@ -69,10 +57,6 @@ class PostListTest{
 
     @Test
     fun testNavigationBackFromUserDetails() {
-        onView(withId(R.id.loginEmail)).perform(click()).perform(ViewActions.typeText("example@example.com"))
-        onView(withId(R.id.loginUserPassword)).perform(click()).perform(ViewActions.typeText("example"))
-        pressBack()
-        onView(withId(R.id.loginButton)).perform(click())
         onView(withId(R.id.posts_view)).perform(actionOnItemAtPosition<PostAdapter.PostsViewHolder>(3, Helpers.clickChildView(R.id.username)))
 
         onView(withId(R.id.album_icon)).check(matches(isDisplayed()))
@@ -84,10 +68,6 @@ class PostListTest{
 
     @Test
     fun testNavigationToComments() {
-        onView(withId(R.id.loginEmail)).perform(click()).perform(ViewActions.typeText("example@example.com"))
-        onView(withId(R.id.loginUserPassword)).perform(click()).perform(ViewActions.typeText("example"))
-        pressBack()
-        onView(withId(R.id.loginButton)).perform(click())
         onView(withId(R.id.posts_view)).perform(actionOnItemAtPosition<PostAdapter.PostsViewHolder>(2, Helpers.clickChildView(R.id.show_comments_button)))
 
         onView(withId(R.id.comments_view)).check(matches(isDisplayed()))
@@ -95,10 +75,6 @@ class PostListTest{
 
     @Test
     fun testNavigationBackFromComments() {
-        onView(withId(R.id.loginEmail)).perform(click()).perform(ViewActions.typeText("example@example.com"))
-        onView(withId(R.id.loginUserPassword)).perform(click()).perform(ViewActions.typeText("example"))
-        pressBack()
-        onView(withId(R.id.loginButton)).perform(click())
         onView(withId(R.id.posts_view)).perform(actionOnItemAtPosition<PostAdapter.PostsViewHolder>(2, Helpers.clickChildView(R.id.show_comments_button)))
 
         onView(withId(R.id.comments_view)).check(matches(isDisplayed()))
@@ -111,10 +87,6 @@ class PostListTest{
 
     @Test
     fun testNavigationToMap(){
-        onView(withId(R.id.loginEmail)).perform(click()).perform(ViewActions.typeText("example@example.com"))
-        onView(withId(R.id.loginUserPassword)).perform(click()).perform(ViewActions.typeText("example"))
-        pressBack()
-        onView(withId(R.id.loginButton)).perform(click())
         onView(withId(R.id.posts_view)).perform(actionOnItemAtPosition<PostAdapter.PostsViewHolder>(5, Helpers.clickChildView(R.id.username)))
 
         onView(withId(R.id.map_icon)).check(matches(isDisplayed()))
@@ -126,10 +98,6 @@ class PostListTest{
 
     @Test
     fun testNavigationBackFromMap(){
-        onView(withId(R.id.loginEmail)).perform(click()).perform(ViewActions.typeText("example@example.com"))
-        onView(withId(R.id.loginUserPassword)).perform(click()).perform(ViewActions.typeText("example"))
-        pressBack()
-        onView(withId(R.id.loginButton)).perform(click())
 
         onView(withId(R.id.posts_view)).perform(actionOnItemAtPosition<PostAdapter.PostsViewHolder>(5, Helpers.clickChildView(R.id.username)))
 
