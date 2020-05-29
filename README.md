@@ -55,7 +55,7 @@ Icons made by:
   <img src="https://user-images.githubusercontent.com/51888438/83238978-7a2b1980-a197-11ea-8e06-411c9739ad5b.jpg" alt="screen-icon" width="212px"/>
  <img src="https://user-images.githubusercontent.com/51888438/83242925-77cbbe00-a19d-11ea-917c-8209f873975e.jpg" alt="login-screen" width="212px"/>
  <img src="https://user-images.githubusercontent.com/51888438/83242930-78fceb00-a19d-11ea-9003-34df296ab8f5.jpg" alt="register-screen" width="212px"/>
- <img src="https://user-images.githubusercontent.com/51888438/83308575-5a333e80-a207-11ea-83d1-cf0ad2db39ae.jpgg" alt="home-screen" width="212px"/>
+ <img src="https://user-images.githubusercontent.com/51888438/83308575-5a333e80-a207-11ea-83d1-cf0ad2db39ae.jpg" alt="home-screen" width="212px"/>
    <img src="https://user-images.githubusercontent.com/51888438/83308574-5a333e80-a207-11ea-9b83-aefd33e50cbb.jpg" alt="addpost-screen" width="212px"/>
   <img src="https://user-images.githubusercontent.com/51888438/83308577-5acbd500-a207-11ea-8f2f-babe12388840.jpg" alt="comment-screen" width="212px"/>
   <img src="https://user-images.githubusercontent.com/51888438/83308578-5acbd500-a207-11ea-8ff3-f10a985722b9.jpg" alt="user-screen" width="212px"/>
