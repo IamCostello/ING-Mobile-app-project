@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.kotlinpostapi.Navigation
-import com.example.kotlinpostapi.posts.PostAdapter
+import com.example.kotlinpostapi.Posts.PostAdapter
 import com.example.kotlinpostapi.posts.PostViewModel
 import com.example.kotlinpostapi.apiObjects.Post
 import com.example.kotlinpostapi.databinding.FragmentPostListBinding

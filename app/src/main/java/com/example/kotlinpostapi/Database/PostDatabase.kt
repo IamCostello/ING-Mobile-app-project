@@ -37,7 +37,7 @@ public abstract class PostDatabase() : RoomDatabase() {
     companion object {
         private var INSTANCE: PostDatabase? = null
 
-        fun getPostDatabase(context: Context, scope: CoroutineScope): PostDatabase{
+        fun getPostDatabase(context: Context): PostDatabase{
             val tempInstance = INSTANCE
 
             if (tempInstance != null) {

@@ -24,7 +24,7 @@ import org.koin.dsl.module
 class App : Application() {
     private var listOfModules = module {
         single { PostApi(androidContext()) }
-        single { providePostDao(androidContext(), CoroutineScope(Dispatchers.IO)) }
+        single { providePostDao(androidContext()) }
         single { provideApiService(get()) }
         single { PostRepository(postDao = get(), postApiService = get()) }
         single { CommentsRepository(postApiService = get()) }
@@ -53,7 +53,7 @@ class App : Application() {
         return api.getPostApiService()
     }
 
-    private fun providePostDao(context: Context, scope: CoroutineScope): PostDao {
-        return PostDatabase.getPostDatabase(context, scope).PostDao()
+    private fun providePostDao(context: Context): PostDao {
+        return PostDatabase.getPostDatabase(context).PostDao()
     }
 }

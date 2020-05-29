@@ -2,6 +2,7 @@ package com.example.kotlinpostapi.Posts
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinpostapi.Navigation.OnPostClickListener
 import com.example.kotlinpostapi.Navigation.OnUserClickListener
@@ -13,14 +14,13 @@ import kotlinx.android.synthetic.main.post_view.view.*
 
 
 class PostAdapter(
-    private var posts: List<Post>,
     var onUserClickListener: OnUserClickListener,
     var onPostClickListener: OnPostClickListener
 ) : PagedListAdapter<Post, PostAdapter.PostsViewHolder>(PostDiffUtil) {
 
     private var networkState: NetworkState? = null
 
-    inner class PostsViewHolder(binding: PostViewBinding, OnUserClickListener: OnUserClickListener, OnPostClickListener: OnPostClickListener) : RecyclerView.ViewHolder(binding.root) {
+    inner class PostsViewHolder(binding: PostViewBinding) : RecyclerView.ViewHolder(binding.root) {
         private val binding: PostViewBinding = binding
 
         fun bind(post: Post){
@@ -34,7 +34,7 @@ class PostAdapter(
         val binding = PostViewBinding.inflate(layoutInflater)
 
 
-        return PostsViewHolder(binding, onUserClickListener, onPostClickListener)
+        return PostsViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: PostsViewHolder, position: Int) {

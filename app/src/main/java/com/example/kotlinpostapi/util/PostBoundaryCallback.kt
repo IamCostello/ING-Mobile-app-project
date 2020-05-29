@@ -55,7 +55,6 @@ class PostBoundaryCallback (
 
             override fun onResponse(call: Call<List<Post>>, response: Response<List<Post>>) {
                 insertIntoDb(response, it)
-                response.body()?.forEach { println(it?.id) }
             }
         }
     }
