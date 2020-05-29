@@ -3,6 +3,7 @@ package com.example.kotlinpostapi.views
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.Espresso.pressBack
 import androidx.test.espresso.IdlingRegistry
+import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
@@ -40,6 +41,10 @@ class AlbumListTest{
 
     @Test
     fun testIsDisplayingAlbumList(){
+        onView(withId(R.id.loginEmail)).perform(click()).perform(ViewActions.typeText("example@example.com"))
+        onView(withId(R.id.loginUserPassword)).perform(click()).perform(ViewActions.typeText("example"))
+        pressBack()
+        onView(withId(R.id.loginButton)).perform(click())
         onView(withId(R.id.posts_view)).perform(actionOnItemAtPosition<PostAdapter.PostsViewHolder>(4, Helpers.clickChildView(R.id.username)))
 
         onView(withId(R.id.album_icon)).perform(click())
@@ -49,6 +54,10 @@ class AlbumListTest{
 
     @Test
     fun testAreListsNotEmpty() {
+        onView(withId(R.id.loginEmail)).perform(click()).perform(ViewActions.typeText("example@example.com"))
+        onView(withId(R.id.loginUserPassword)).perform(click()).perform(ViewActions.typeText("example"))
+        pressBack()
+        onView(withId(R.id.loginButton)).perform(click())
 
         for (i in listOf(1,11,21,31,41,51)){
 

@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.kotlinpostapi.Navigation
 import com.example.kotlinpostapi.databinding.FragmentLoginBinding
+import com.example.kotlinpostapi.util.EspressoIdlingResource
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -57,13 +58,16 @@ class Login : Fragment(), Navigation.OnLogInClickListener,
     override fun onLogInClick() {
 
         if (validateForm()) {
+            EspressoIdlingResource.increment()
             FirebaseHelper.getInstance()?.signInWithEmailAndPassword(email,password)?.addOnCompleteListener{
                 if(it.isSuccessful){
+                    EspressoIdlingResource.decrement()
                     findNavController().navigate(LoginDirections.actionAuthLoginToPostList())
                     return@addOnCompleteListener
 
                 }
                 else{
+                    EspressoIdlingResource.decrement()
                     Toast.makeText(activity,"Incorrect data", Toast.LENGTH_LONG).show()
 
                 }

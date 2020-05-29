@@ -3,6 +3,8 @@ package com.example.kotlinpostapi.views
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.Espresso.pressBack
 import androidx.test.espresso.IdlingRegistry
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
@@ -38,6 +40,13 @@ class CommentsListTest{
     }
     @Test
     fun testCommentsAreDisplayed() {
+
+        onView(withId(R.id.loginEmail)).perform(click()).perform(typeText("example@example.com"))
+        onView(withId(R.id.loginUserPassword)).perform(click()).perform(typeText("example"))
+        pressBack()
+        onView(withId(R.id.loginButton)).perform(click())
+
+
         for (i in listOf(1,15,23,37,45,53,67,72,89,91)){
 
             onView(withId(R.id.posts_view)).perform(actionOnItemAtPosition<PostAdapter.PostsViewHolder>(1, Helpers.clickChildView(R.id.show_comments_button)))
