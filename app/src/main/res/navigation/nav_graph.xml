@@ -19,10 +19,13 @@
         android:label="authUserLogin">
         <action
             android:id="@+id/action_authLogin_to_postList"
-            app:destination="@id/postList" />
+            app:destination="@id/postList"
+            app:enterAnim="@anim/slide_up" />
         <action
             android:id="@+id/action_authLogin_to_authRegister"
-            app:destination="@id/authRegister" />
+            app:destination="@id/authRegister"
+            app:enterAnim="@anim/slide_up_v2"
+            app:popExitAnim="@anim/slide_down_v2" />
     </fragment>
     <fragment
         android:id="@+id/authRegister"
@@ -34,7 +37,9 @@
             app:destination="@id/postList" />
         <action
             android:id="@+id/action_authRegister_to_authLogin5"
-            app:destination="@id/authLogin" />
+            app:destination="@id/authLogin"
+            app:enterAnim="@anim/slide_up"
+            app:popExitAnim="@anim/slide_down" />
     </fragment>
     <fragment
         android:id="@+id/postList"
