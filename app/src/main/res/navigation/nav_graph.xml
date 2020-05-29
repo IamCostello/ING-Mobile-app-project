@@ -6,6 +6,13 @@
     app:startDestination="@id/authLogin">
 
 
+
+    <fragment
+        android:id="@+id/addPost"
+        android:name="com.example.kotlinpostapi.views.NewPost"
+        android:label="newPost"/>
+
+
     <fragment
         android:id="@+id/authLogin"
         android:name="com.example.kotlinpostapi.firebase.Login"

@@ -47,8 +47,8 @@ class Register : Fragment(), Navigation.OnExistingUserClickListener,
     override fun onRegisterClick() {
 
         if (validateForm()) {
-            
-
+            //
+            FirebaseHelper.register(email,password)
             //findNavController().navigate(RegisterDirections.actionAuthLoginToPostList())
 
 

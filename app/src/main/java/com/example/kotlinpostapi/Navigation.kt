@@ -41,5 +41,9 @@ class Navigation {
         fun onMoveToRegisterClick()
     }
 
+    interface OnAddPostClickListener{
+        fun onAddPostClick()
+    }
+
 
 }

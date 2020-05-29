@@ -16,4 +16,6 @@
     <string name="existingAccount">Already have an account? Sign in</string>
     <string name="signin">Log in</string>
     <string name="noAccount">Don\'t have an account</string>
+    <string name="title">Post title</string>
+    <string name="description">Post description"</string>
 </resources>

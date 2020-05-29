@@ -58,10 +58,10 @@ class Login : Fragment(), Navigation.OnLogInClickListener,
         if (validateForm()) {
             Log.d("asa","i tak dziala nobek +" + validateForm())
             FirebaseHelper.login(email, password)
-            if(FirebaseHelper.getCurrentUser() != null){
+
                 findNavController().navigate(LoginDirections.actionAuthLoginToPostList())
 
-            }
+
         }
 
 

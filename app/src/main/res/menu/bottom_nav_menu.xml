@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/postList"
+        android:icon="@drawable/post"
+        android:title="Home"
+        android:menuCategory="secondary"
+        />
+    <item
+        android:id="@+id/addPost"
+        android:icon="@drawable/user_icon"
+        android:title="User"
+        android:menuCategory="secondary"/>
+
+    <item
+        android:id="@+id/userInfo"
+        android:icon="@drawable/more"
+        android:menuCategory="secondary"
+        android:title="Add"/>
+
+
+</menu>
