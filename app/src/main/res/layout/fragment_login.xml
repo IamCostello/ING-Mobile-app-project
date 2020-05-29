@@ -89,7 +89,7 @@
             android:layout_marginTop="30dp"
             android:textColor="@color/colorDividerColor"
             android:text="@string/noAccount"
-            android:textSize="17sp"
+
             android:textStyle="bold"
             android:fontFamily="sans-serif-light"
             app:layout_constraintEnd_toEndOf="@+id/loginButton"
