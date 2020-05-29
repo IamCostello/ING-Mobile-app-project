@@ -26,10 +26,10 @@ Aplikacja tworzona w ramach współpracy z ING przez zespół w składzie:
   <img src="https://user-images.githubusercontent.com/51888438/83239199-d55d0c00-a197-11ea-9c60-2a3b75ec12f8.jpg" alt="user-screen" width="212px"/>
   <img src="https://user-images.githubusercontent.com/28679660/80126348-430f8a00-8593-11ea-8a52-237c21d7b0b2.jpg" alt="error-screen" width="212px"/>
  <img src="https://user-images.githubusercontent.com/51888438/83239375-1523f380-a198-11ea-9f32-4d4035ab5c68.jpg" alt="map-screen" width="212px"/>
+ <img src="https://user-images.githubusercontent.com/51888438/83239379-15bc8a00-a198-11ea-8b97-7e099595887e.jpg" alt="album-screen" width="212px"/>
+ <img src="https://user-images.githubusercontent.com/51888438/83239380-15bc8a00-a198-11ea-8977-ad448e3cd144.jpg" alt="photo-screen" width="212px"/>
 </p>
 <p align="center">
-<img src="https://user-images.githubusercontent.com/51888438/83239379-15bc8a00-a198-11ea-8b97-7e099595887e.jpg" alt="album-screen" width="212px"/>
- <img src="https://user-images.githubusercontent.com/51888438/83239380-15bc8a00-a198-11ea-8977-ad448e3cd144.jpg" alt="photo-screen" width="212px"/>
   <img src="https://user-images.githubusercontent.com/51888438/83239381-16552080-a198-11ea-94ec-f50913da1014.jpg" alt="zoom-photo-screen" width="212px"/>
  </p>
 
