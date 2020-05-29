@@ -47,7 +47,7 @@ Icons made by:
  
 <a name="preview"></a>  
 # App preview:
-<p float="left">
+<p align="center">
  <img src="https://user-images.githubusercontent.com/51888438/83301558-2867ab00-a1fa-11ea-86e4-297606b07b27.gif" alt="gif"
       width="212px"/>
 </p>
@@ -55,13 +55,14 @@ Icons made by:
   <img src="https://user-images.githubusercontent.com/51888438/83238978-7a2b1980-a197-11ea-8e06-411c9739ad5b.jpg" alt="screen-icon" width="212px"/>
  <img src="https://user-images.githubusercontent.com/51888438/83242925-77cbbe00-a19d-11ea-917c-8209f873975e.jpg" alt="login-screen" width="212px"/>
  <img src="https://user-images.githubusercontent.com/51888438/83242930-78fceb00-a19d-11ea-9003-34df296ab8f5.jpg" alt="register-screen" width="212px"/>
- <img src="https://user-images.githubusercontent.com/51888438/83239583-6af89b80-a198-11ea-91e3-23c781d04d43.jpg" alt="home-screen" width="212px"/>
-  <img src="https://user-images.githubusercontent.com/51888438/83239151-be1e1e80-a197-11ea-85d0-3b1f91076887.jpg" alt="comment-screen" width="212px"/>
-  <img src="https://user-images.githubusercontent.com/51888438/83239199-d55d0c00-a197-11ea-9c60-2a3b75ec12f8.jpg" alt="user-screen" width="212px"/>
+ <img src="https://user-images.githubusercontent.com/51888438/83308575-5a333e80-a207-11ea-83d1-cf0ad2db39ae.jpgg" alt="home-screen" width="212px"/>
+   <img src="https://user-images.githubusercontent.com/51888438/83308574-5a333e80-a207-11ea-9b83-aefd33e50cbb.jpg" alt="addpost-screen" width="212px"/>
+  <img src="https://user-images.githubusercontent.com/51888438/83308577-5acbd500-a207-11ea-8f2f-babe12388840.jpg" alt="comment-screen" width="212px"/>
+  <img src="https://user-images.githubusercontent.com/51888438/83308578-5acbd500-a207-11ea-8ff3-f10a985722b9.jpg" alt="user-screen" width="212px"/>
   <img src="https://user-images.githubusercontent.com/28679660/80126348-430f8a00-8593-11ea-8a52-237c21d7b0b2.jpg" alt="error-screen" width="212px"/>
  <img src="https://user-images.githubusercontent.com/51888438/83239375-1523f380-a198-11ea-9f32-4d4035ab5c68.jpg" alt="map-screen" width="212px"/>
- <img src="https://user-images.githubusercontent.com/51888438/83239379-15bc8a00-a198-11ea-8b97-7e099595887e.jpg" alt="album-screen" width="212px"/>
- <img src="https://user-images.githubusercontent.com/51888438/83239380-15bc8a00-a198-11ea-8977-ad448e3cd144.jpg" alt="photo-screen" width="212px"/>
+ <img src="https://user-images.githubusercontent.com/51888438/83308571-59021180-a207-11ea-9e7e-d8039f9cac68.jpg" alt="album-screen" width="212px"/>
+ <img src="https://user-images.githubusercontent.com/51888438/83308573-599aa800-a207-11ea-839b-f42b99792403.jpg" alt="photo-screen" width="212px"/>
  <img src="https://user-images.githubusercontent.com/51888438/83239381-16552080-a198-11ea-94ec-f50913da1014.jpg" alt="zoom-photo-screen" width="212px"/>
 </p>
 
@@ -93,6 +94,6 @@ Main goal of mobile app is to download, parse and display data from [JSONPlaceho
   - [x] Create post, save to device
   - [x] Remote & local data loading
   - [x] Lifecycle aware error dialog fragment
-  - [ ] More main screen interaction
+  - [x] More main screen interaction
   - [x] Design changes
   - [x] Add photo zoom
