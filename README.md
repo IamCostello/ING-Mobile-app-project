@@ -29,6 +29,8 @@ Project created in cooperation with ING by the team:\
 - <a href="https://github.com/JakeWharton/timber" title="timber">Timber</a>
 - <a href="https://github.com/square/moshi" title="Moshi">Moshi</a>
 - <a href="https://insert-koin.io" title="Koin">Koin</a>
+- <a href="https://firebase.google.com/docs/android/setup" title="Firebase">Firebase</a>
+- <a href="https://developer.android.com/topic/libraries/architecture/room" title="Room">Room</a>
 - <a href="https://material.io" title="material">Material Design</a>
 - <a href="https://square.github.io/picasso/" title="picasso">Picasso</a>
 - <a href="http://jsibbold.github.io/zoomage/" title="zoomage">Zoomage</a>
