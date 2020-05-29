@@ -26,6 +26,7 @@ Project created in cooperation with ING by the team:\
 <a name="built"></a>
 ### Built with
 - <a href="https://gradle.org" title="gradle">Gradle</a>
+- <a href="https://square.github.io/retrofit/" title="Retrofit">Retrofit</a>
 - <a href="https://github.com/JakeWharton/timber" title="timber">Timber</a>
 - <a href="https://github.com/square/moshi" title="Moshi">Moshi</a>
 - <a href="https://insert-koin.io" title="Koin">Koin</a>
@@ -37,7 +38,7 @@ Project created in cooperation with ING by the team:\
 <a name="test"></a>
 ### Tested with
 - <a href="https://junit.org/junit4/" title="junit">JUnit4</a>
-- Espresso
+- <a href="https://developer.android.com/training/testing/espresso" title="espresso">Espresso</a>
 
 <a name="icon"></a>
 ### Icon sources
@@ -92,3 +93,5 @@ Main goal of mobile app is to download, parse and display data from [JSONPlaceho
   - [x] More main screen interaction
   - [x] Design changes
   - [x] Add photo zoom
+  - [x] Write tests
+ 
