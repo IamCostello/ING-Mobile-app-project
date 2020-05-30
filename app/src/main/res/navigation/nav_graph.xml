@@ -10,7 +10,11 @@
     <fragment
         android:id="@+id/addPost"
         android:name="com.example.kotlinpostapi.views.NewPost"
-        android:label="newPost"/>
+        android:label="newPost">
+        <action
+            android:id="@+id/action_addPost_to_postList"
+            app:destination="@id/postList" />
+    </fragment>
 
 
     <fragment
